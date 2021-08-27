@@ -1,0 +1,17 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #828282;
+  padding: 33px 0 32px 10px;
+}
+.nav-list {
+  display: flex;
+  &__item {
+    color: #828282;
+    margin-left: 20px;
+    &:last-child {
+      display: none;
+    }
+  }
+}
+

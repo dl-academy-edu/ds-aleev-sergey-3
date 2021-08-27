@@ -1,0 +1,29 @@
+.mainPictureSlider {
+    align-items: center;
+}
+
+.slider {
+    width: 100%;
+    
+    &__pic {
+        object-fit: cover;
+        height: 465px;
+    }
+}
+.slider__pic picture:not(:nth-child(2)) {
+    display: none;
+}
+
+.slider-title {
+    padding-left: 80px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 40px 0 36px 0;
+    &__heading {
+        width: 250px;
+        font-size: 47px;
+        line-height: 57px;
+    }
+}

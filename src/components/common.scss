@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+%psevdo {
+  content: '';
+  display: block;
+  position: absolute;
+  }
+$time:.4s;
+.grid{
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+body {
+  font-size: 18px;
+  line-height: 22px;
+  font-family: Oswald, sans-serif;
+}
+h1 {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+}
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.no-dots {
+  list-style-type:none;
+  padding: 0;
+  margin: 0;
+}
+
+// BUTTONS
+
+.btn-black,
+.btn-white,
+.btn-bad,
+.btn-good {
+  text-align: center;
+  padding: 8px 17px;
+  border-radius: 30px;
+  border: 2px solid;
+  transition: $time;
+}
+
+.btn-black {
+  border-color:black;
+  background-color: #070707;
+  color: #FFFFFF;
+  &:hover,
+  &:focus {
+    background-color: #FFFFFF;
+    color: #070707
+  }
+}
+.btn-white {
+  border-color:black;
+  background-color: white;
+  color: black;
+  &:hover,
+  &:focus {
+    border-color:black;
+    color: white;
+    background-color: black;
+  }
+}
+.btn-bad {
+  border-color:#EB3617;
+  background-color:white;
+  color: #EB3617;
+  &:hover,
+  &:focus {
+    border-color:#EB3617;
+    color: white;
+    background-color:#EB3617;
+  }
+}
+.btn-good {
+  border-color:#03BC3C;
+  background-color:white;
+  color: #03BC3C;
+  &:hover,
+  &:focus {
+    border-color:#03BC3C;
+    color: white;
+    background-color:#03BC3C;
+  }
+}
+
+// Slider Button
+
+.slider-button {
+  width: 42px;
+  height: 42px;
+  border: 2.5px solid #070707;
+  border-radius: 21px;
+}
+
+// Подключение компонентов
+@import "./header/header";
+@import "./footer/footer";
+@import "./chatAbout/chatAbout";
+@import "./mainPictureSlider/mainPictureSlider"
