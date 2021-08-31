@@ -1,0 +1,22 @@
+.chatAbout {
+    padding-top: 60px;
+    padding-bottom: 62px;
+    &__container {
+
+    }
+
+}
+.chat {
+    &__item {
+        position: relative;
+        min-height: 135px;
+    }
+    &__text {
+        position: absolute;
+        max-width: 448px;
+        padding: 15px;
+    }
+}
+.chat__item svg {
+    position: absolute;
+}

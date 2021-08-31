@@ -159,5 +159,10 @@ let myCounter1 = counterCreator(-1)
 console.log(myCounter1())
 console.log(myCounter1())
 
-    
-    
+let myCounter2 = counterCreator(4)
+console.log(myCounter2())
+console.log(myCounter2())
+
+let myCounter3 = counterCreator()
+console.log(myCounter3())
+console.log(myCounter3())

@@ -45,6 +45,9 @@ button {
   padding-right: 20px;
   padding-left: 20px;
 }
+.another-background {
+  background: #F6F6F6;
+}
 .no-dots {
   list-style-type:none;
   padding: 0;
@@ -111,12 +114,29 @@ button {
 // Slider Button
 
 .slider-button {
+  display: flex;
+  flex-direction: row;
   width: 42px;
   height: 42px;
   border: 2.5px solid #070707;
   border-radius: 21px;
+  padding-top: 6px;
+  &_left {
+    padding-left: 9px;
+  }
+  &_right {
+    padding-left: 13px;
+  }
+}
+// custom radio-button
+
+.custom-radio {
+  display: none
 }
 
+.custom-radio:checked + label svg {
+  fill: #070707;
+}
 // Подключение компонентов
 @import "./header/header";
 @import "./footer/footer";

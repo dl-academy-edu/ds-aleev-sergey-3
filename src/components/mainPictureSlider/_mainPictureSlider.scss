@@ -4,10 +4,16 @@
 
 .slider {
     width: 100%;
-    
+    margin-bottom: 60px;
     &__pic {
         object-fit: cover;
         height: 465px;
+        margin-bottom: 30px;
+    }
+    &__controls {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
     }
 }
 .slider__pic picture:not(:nth-child(2)) {
@@ -26,4 +32,16 @@
         font-size: 47px;
         line-height: 57px;
     }
+}
+.slider-radio-buttons {
+    display: flex;
+    flex-direction: row;
+    margin-top: 6px;
+}
+.slider-radio-buttons label {
+    cursor: pointer;
+}
+.slider-radio-buttons label:not(:last-child),
+.slider-radio-buttons .custom-radio:not(:last-child) {
+    margin-right: 7px;
 }
