@@ -6,6 +6,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/common.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/fonts/oswald.css" />
@@ -15,13 +16,23 @@
   <body>
     @@include('header/index.html')
     <main class="">
+      
       @@include('mainPictureSlider/index.html')
+
       <div class="another-background">
         @@include('chatAbout/index.html')
       </div>
 
+      @@include('skillsList/index.html')
+
+      <div class="another-background">
+        @@include('portfolio/index.html')
+      </div>
+
     </main>
     @@include('footer/index.html')
+
+    @@include('modalSignIn/index.html')
     <script src="scripts.js"></script>
   </body>
 </html>

@@ -1,0 +1,21 @@
+.skills-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__text {
+        color: #828282;
+        font-size: 14px;
+        line-height: 17px;
+        margin: 20px 0 24px 0;
+    }
+}
+.skill-card__bar {
+    display: flex;
+    align-items: center;
+}
+.skill-card__bar p {
+    color: #828282;
+    font-size: 14px;
+    line-height: 17px;
+    margin-right: 12px;
+}

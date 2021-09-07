@@ -1,0 +1,48 @@
+.portfolio {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 60px;
+    &__title {
+        margin-bottom: 50px;
+    }
+    &__slider {
+        position: relative;
+    }
+    &__arrow {
+        cursor: pointer;
+        top: 281px;
+        position: absolute;
+        &_left {
+            left: 30px;
+        }
+        &_right {
+             right: 30px;
+        }
+    }
+
+}
+.slider-description {
+    width: 100%;
+    bottom: 0;
+    padding: 31px 0;
+    position: absolute;
+    background-color: $black-opacity;
+    color: white;
+    &__title {
+        max-width: 309px;
+        margin: 0 auto; 
+        text-align: center;
+        border-bottom: 1px dashed white;
+        margin-bottom: 16px;
+        font-size: 18px;
+        line-height: 21px;
+    }
+    &__text {
+        margin: 0 auto;
+        text-align: center;
+        max-width: 400px;
+        font-size: 14px;
+        line-height: 16px;
+    }
+}

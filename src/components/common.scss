@@ -1,3 +1,5 @@
+@import "./colors";
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -46,7 +48,7 @@ button {
   padding-left: 20px;
 }
 .another-background {
-  background: #F6F6F6;
+  background: $Wild-Sand;
 }
 .no-dots {
   list-style-type:none;
@@ -69,12 +71,12 @@ button {
 
 .btn-black {
   border-color:black;
-  background-color: #070707;
-  color: #FFFFFF;
+  background-color: black;
+  color: white;
   &:hover,
   &:focus {
-    background-color: #FFFFFF;
-    color: #070707
+    background-color: white;
+    color: #070707;
   }
 }
 .btn-white {
@@ -89,25 +91,25 @@ button {
   }
 }
 .btn-bad {
-  border-color:#EB3617;
+  border-color:$Pomegranate;
   background-color:white;
-  color: #EB3617;
+  color: $Pomegranate;
   &:hover,
   &:focus {
-    border-color:#EB3617;
+    border-color:$Pomegranate;
     color: white;
-    background-color:#EB3617;
+    background-color:$Pomegranate;
   }
 }
 .btn-good {
-  border-color:#03BC3C;
+  border-color: $Malachite;
   background-color:white;
-  color: #03BC3C;
+  color: $Malachite;
   &:hover,
   &:focus {
-    border-color:#03BC3C;
+    border-color: $Malachite;
     color: white;
-    background-color:#03BC3C;
+    background-color: $Malachite;
   }
 }
 
@@ -137,8 +139,17 @@ button {
 .custom-radio:checked + label svg {
   fill: #070707;
 }
+
 // Подключение компонентов
 @import "./header/header";
 @import "./footer/footer";
 @import "./chatAbout/chatAbout";
-@import "./mainPictureSlider/mainPictureSlider"
+@import "./mainPictureSlider/mainPictureSlider";
+@import "./skillsList/skillsList";
+@import "./skillsCard/skillsCard";
+@import "./portfolio/portfolio";
+@import "./modalSignIn/modalSignIn";
+
+.modal-open {
+  display: block
+}

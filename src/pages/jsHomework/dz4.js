@@ -54,8 +54,33 @@ const data = [
         developerIndex: 3,
     },
 ];
-function log(value) {
-    console.log(value)
+
+
+function log() {
+     for (let i = 0; i < 3; i++) {
+         
+function splice() {
+    let toSplice = data[i].affectedBy
+    if (toSplice.length > 4) {
+        let spliced = toSplice.splice(4,4)
+        return spliced.join(', ') + ' и другие языки программирования'
+    } else {
+        return toSplice.join(', ')
+    }
+}
+
+    let developerIndex = data[i].developerIndex
+    let foundIndex = developers.find(currentValue => currentValue.index === developerIndex)
+    
+    let extensions = data[i].filenameExtensions.split(', ')
+    let extensionsDone = extensions.map(item => '.' + item).join(', ')
+const example = `${data[i].name} - язык программирования выпущенный в ${data[i].year} году.
+Автором языка стал - ${foundIndex.name}.
+Файлы программ, написаных на ${data[i].name}, могут иметь разширения ${extensionsDone}.
+ ${data[i].name} испытал влияние ${data[i].influencedBy.length}-ти языков программирования: ${data[i].influencedBy.join(', ')}.
+${data[i].name} повлиял на ${splice()}.`
+  console.log(example)
+}
 }
 function counter() {
     let i = 10
@@ -67,15 +92,7 @@ function counter() {
           }
     }
 }
-console.log('Сообщение выведется через 10 секунд')
+console.log('Сообщение выведется через 10 секунд');
 
-
- for (let i = 0; i < 3; i++) {
-const example = `${data[i].name} - язык программирования выпущенный в ${data[i].year} году.
-Автором языка стал - .
-Файлы программ, написаных на ${data[i].name}, могут иметь разширения ${data[i].filenameExtensions}.
- ${data[i].name} испытал влияние ${data[i].influencedBy.length}-ти языков программирования: ${data[i].influencedBy}.
-${data[i].name} повлиял на ${data[i].influencedBy}.`
-}
 let timerId = setInterval(counter(), 1000)
-setTimeout(function() {log(example)}, 11000)
+setTimeout(function() {log()}, 11000)
