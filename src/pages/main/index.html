@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/common.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
-    <link rel="stylesheet" href="/static/fonts/oswald.css" />
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
     <link rel="shortcut icon" href="/static/images/favicon.ico">
-    <title>Главная</title>
+    <title>Main</title>
   </head>
   <body>
     @@include('header/index.html')
@@ -31,8 +31,13 @@
 
     </main>
     @@include('footer/index.html')
-
+    <div class="modal-background">
     @@include('modalSignIn/index.html')
+
+    @@include('modalRegister/index.html')
+
+    @@include('modalSendMessage/index.html')
+    </div>
     <script src="scripts.js"></script>
   </body>
 </html>

@@ -1,17 +1,38 @@
 .navigation {
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
-  border-bottom: 1px solid #828282;
+  border-bottom: 1px solid $Gray;
   padding: 33px 0 32px 10px;
+  &__home {
+    transition: $time;
+    color: black;
+  }
 }
 .nav-list {
   display: flex;
   &__item {
-    color: #828282;
+    color: $Gray;
     margin-left: 20px;
+    transition: $time;
+    &:hover {
+      color: black;
+      cursor: pointer;
+
+    }
     &:last-child {
       display: none;
     }
   }
 }
-
+.nav-list:hover ~ .navigation__home {
+  color: $Gray;
+}
+.nav-list button:hover {
+  cursor: pointer;
+}

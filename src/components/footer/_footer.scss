@@ -42,9 +42,13 @@ footer {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: space-between;
   margin-bottom: 30px;
   width: 318px;
+  height: 94px;
   &__item {
-    margin: 0 10px 10px 0;
+    &:nth-child(3n+2) {
+      margin: 0 10px;
+    }
   }
 }

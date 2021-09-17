@@ -6,7 +6,6 @@
   padding: 0;
 }
 %psevdo {
-  content: '';
   display: block;
   position: absolute;
   }
@@ -26,10 +25,19 @@ img {
 body {
   font-size: 18px;
   line-height: 22px;
-  font-family: Oswald, sans-serif;
+  font-family: 'Gilroy';
+  font-weight: normal;
+  font-style: normal;
 }
 h1 {
   margin: 0;
+}
+h2 {
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: 41px;
 }
 a {
   text-decoration: none;
@@ -39,6 +47,9 @@ button {
   background-color: inherit;
   border: none;
   color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
 }
 .container {
   width: 100%;
@@ -62,10 +73,13 @@ button {
 .btn-white,
 .btn-bad,
 .btn-good {
+  font-family: Gilroy;
+  font-weight: bold;
+  font-style: normal;
   text-align: center;
-  padding: 8px 17px;
+  padding: 7px 16px;
   border-radius: 30px;
-  border: 2px solid;
+  border: 3px solid;
   transition: $time;
 }
 
@@ -123,6 +137,10 @@ button {
   border: 2.5px solid #070707;
   border-radius: 21px;
   padding-top: 6px;
+  transition: $time;
+  &:hover {
+    border-color: $Gray;
+  }
   &_left {
     padding-left: 9px;
   }
@@ -133,12 +151,117 @@ button {
 // custom radio-button
 
 .custom-radio {
-  display: none
+  display: none;
 }
-
+.custom-radio:hover + label svg {
+  fill: $Gray;
+}
 .custom-radio:checked + label svg {
   fill: #070707;
 }
+
+
+// custom check-box
+
+.custom-checkbox {
+  height: 25px;
+  position: relative;
+  padding-left: 37px;
+  &__input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin-left: -37px;
+    border: 2.5px solid #070707;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+}
+
+.custom-checkbox__input:checked + .custom-checkbox::after {
+    @extend %psevdo;
+    content: url("/static/images/checkbox-mark.svg");
+    left: 5px;
+    top:3px;
+}
+.custom-checkbox_no-label {
+  padding-left: 0;
+}
+.custom-checkbox_no-label::before {
+  margin-left: 0;
+  position: relative;
+}
+
+
+// Modal Popups
+
+.modal-content {
+  padding: 40px;
+  border: 2.5px solid #070707;
+  display: flex;
+  flex-direction: column;
+  &__button {
+      align-self: flex-start;
+  }
+}
+.modal-background {
+  display: none;
+}
+.required-field {
+  color: $Pomegranate;
+}
+input[type="text"] {
+    height: 50px;
+    width: 100%;
+    padding: 2.5px;
+    border: 2.5px solid #E5E5E5;
+    transition: $time;
+    outline: none;
+    &:hover {
+        cursor: pointer;
+        border-color: #828282;
+    }
+    &:focus {
+        border-color: #070707;
+        cursor: text;
+    }
+}
+.modal-content label + input,
+.modal-content label input,
+.modal-content textarea {
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+.modal-content textarea {
+  resize: none;
+  height: 150px;
+}
+.modal-content label:hover {
+  cursor: pointer;
+}
+.modal-close {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: -36px;
+  transition: $time;
+  &:hover,
+  &:active {
+      fill: #070707;
+  }
+}
+
+
+
 
 // Подключение компонентов
 @import "./header/header";
@@ -149,6 +272,9 @@ button {
 @import "./skillsCard/skillsCard";
 @import "./portfolio/portfolio";
 @import "./modalSignIn/modalSignIn";
+@import "./modalRegister/modalRegister";
+@import "./modalSendMessage/modalSendMessage";
+@import "./blogFilter/blogFilter";
 
 .modal-open {
   display: block

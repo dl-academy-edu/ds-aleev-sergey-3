@@ -1,0 +1,22 @@
+.modal-register {
+    width: 100%;
+    max-width: 680px;
+    margin: 42px;
+    display: none;
+    &__ckeckbox {
+        margin-bottom: 20px;
+    }
+}
+.modal-register .modal-content {
+    width: 680px;
+}
+.modal-two-column {
+    display: flex;
+    
+}
+.modal-two-column label {
+    width: 100%;
+    &:first-child {
+        margin-right: 20px;
+    }
+}

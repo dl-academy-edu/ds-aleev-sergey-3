@@ -7,7 +7,6 @@
     margin-bottom: 60px;
     &__pic {
         object-fit: cover;
-        height: 465px;
         margin-bottom: 30px;
     }
     &__controls {
@@ -36,12 +35,19 @@
 .slider-radio-buttons {
     display: flex;
     flex-direction: row;
-    margin-top: 6px;
+    align-items: center;
 }
-.slider-radio-buttons label {
+.slider-radio-buttons svg {
+    transition: $time;
     cursor: pointer;
-}
+  }
 .slider-radio-buttons label:not(:last-child),
 .slider-radio-buttons .custom-radio:not(:last-child) {
     margin-right: 7px;
+}
+
+.slider-button:hover svg {
+    transition: $time;
+    cursor: pointer;
+    fill: $Gray;
 }

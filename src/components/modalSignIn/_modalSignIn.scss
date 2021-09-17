@@ -9,51 +9,15 @@
     position: fixed;
     background-color: $Wild-Sand-Opacity;
 }
-.modal-container {
+.modal-popup {
+    display: none;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.modal-close {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    right: -36px;
-    transition: $time;
-    &:hover,
-    &:active {
-        fill: #070707;
-    }
-
-}
-.modal-content {
-    padding: 40px;
-    border: 2.5px solid #070707;
-    display: flex;
-    flex-direction: column;
-    &__button {
-        align-self: flex-start;
-    }
-}
-.modal-content label + input {
-    margin-top: 6px;
-    margin-bottom: 20px;
-    height: 50px;
+.modal-sign-in {
     width: 100%;
-    padding: 2.5px;
-    border: 2.5px solid #E5E5E5;
-    transition: $time;
-    outline: none;
-    &:hover {
-        cursor: pointer;
-        border-color: #828282;
-    }
-    &:focus {
-        border-color: #070707;
-        cursor: text;
-    }
+    max-width: 290px;
 }
-.modal-content label:hover {
-    cursor: pointer;
-}
+
