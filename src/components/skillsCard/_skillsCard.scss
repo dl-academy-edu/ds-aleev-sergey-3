@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 180px;
     &__text {
         color: #828282;
         font-size: 14px;
@@ -9,6 +10,11 @@
         margin: 20px 0 24px 0;
     }
 }
+img[alt="Git/GitHub"] {
+    width: 90px;
+    height: 90px;
+}
+
 .skill-card__bar {
     display: flex;
     align-items: center;
@@ -18,4 +24,35 @@
     font-size: 14px;
     line-height: 17px;
     margin-right: 12px;
+}
+@media (max-width:1200px) {
+    
+}
+
+@media (max-width:1100px) {
+    .skills-card {
+        &:first-child {
+            margin-bottom: 40px;
+        }
+        &:last-child {
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+
+}
+@media (max-width:900px) {
+    .skill-card {
+        &__svg {
+            width: 111px;
+        }
+    } 
+}
+
+@media (max-width:450px) {
+    .skill-card {
+        &__svg {
+            width: 93px;
+        }
+    }
 }

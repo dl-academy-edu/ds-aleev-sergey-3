@@ -1,34 +1,36 @@
-<section class="grid mainPictureSlider">
+<section class="grid main-picture-slider">
     <div class="slider-title">
         <h1 class="slider-title__heading">Sergey</br>AleeV</h1>
-        <p class="slider-title__text">Future front-end developer 20 years old, Tolyatti</p>
+        <p class="slider-title__text">Future front-end developer 21 years old, Tolyatti</p> 
     </div>
     <div class="slider">
-        <div class="slider__pic">
-            <picture>
-                <source srcset="../../static/images/SliderPics/MyPicture1.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture1-tablet.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture1-mobile.jpg">
-                <img src="../../static/images/SliderPics/MyPicture1.jpg" alt="My Picture">
-            </picture>
-            <picture>
-                <source srcset="../../static/images/SliderPics/MyPicture2.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture2-tablet.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture2-mobile.jpg">
-                <img src="../../static/images/SliderPics/MyPicture2.jpg" alt="My Picture">
-            </picture>
-            <picture>
-                <source srcset="../../static/images/SliderPics/MyPicture3.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture3-tablet.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture3-mobile.jpg">
-                <img src="../../static/images/SliderPics/MyPicture3.jpg" alt="My Picture">
-            </picture>
-            <picture>
-                <source srcset="../../static/images/SliderPics/MyPicture4.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture4-tablet.jpg">
-                <source srcset="../../static/images/SliderPics/MyPicture4-mobile.jpg">
-                <img src="../../static/images/SliderPics/MyPicture4.jpg" alt="My Picture">
-            </picture>
+        <div class="slider__wrapper">
+            <div class="slider__pic">
+                <picture class="slider__slide">    
+                    <source srcset="../../static/images/SliderPics/MyPicture1.jpg" media="(min-width:770px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture1-tablet.jpg" media="(min-width:401px) and (max-width:769px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture1-mobile.jpg" media="(min-width:319px) and (max-width:400px)">
+                    <img src="../../static/images/SliderPics/MyPicture1.jpg" alt="My Picture">
+                </picture>
+                <picture class="slider__slide">
+                    <source srcset="../../static/images/SliderPics/MyPicture2.jpg" media="(min-width:770px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture2-tablet.jpg" media="(min-width:401px) and (max-width:769px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture2-mobile.jpg" media="(min-width:319px) and (max-width:400px)">
+                    <img src="../../static/images/SliderPics/MyPicture2.jpg" alt="My Picture">
+                </picture>
+                <picture class="slider__slide">
+                    <source srcset="../../static/images/SliderPics/MyPicture3.jpg" media="(min-width:770px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture3-tablet.jpg" media="(min-width:401px) and (max-width:769px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture3-mobile.jpg" media="(min-width:319px) and (max-width:400px)">
+                    <img src="../../static/images/SliderPics/MyPicture3.jpg" alt="My Picture">
+                </picture>
+                <!-- <picture>
+                    <source srcset="../../static/images/SliderPics/MyPicture4.jpg" media="(min-width:770px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture4-tablet.jpg" media="(max-width:769px)">
+                    <source srcset="../../static/images/SliderPics/MyPicture4-mobile.jpg" media="(max-width:446px)">
+                    <img src="../../static/images/SliderPics/MyPicture4.jpg" alt="My Picture">
+                </picture> -->
+            </div>
         </div>
         <div class="slider__controls">
             <button class="slider-button slider-button_left">
@@ -52,12 +54,6 @@
                 </label>
                 <input class="custom-radio" type="radio" id="sliderControlsRadio3" name="sliderControlsRadio">
                 <label for="sliderControlsRadio3">
-                    <svg width="10" height="10" viewBox="0 0 10 10" fill="#E5E5E5">
-                        <circle cx="5" cy="5.00006" r="5"/>
-                    </svg>
-                </label>
-                <input class="custom-radio" type="radio" id="sliderControlsRadio4" name="sliderControlsRadio">
-                <label for="sliderControlsRadio4">
                     <svg width="10" height="10" viewBox="0 0 10 10" fill="#E5E5E5">
                         <circle cx="5" cy="5.00006" r="5"/>
                     </svg>

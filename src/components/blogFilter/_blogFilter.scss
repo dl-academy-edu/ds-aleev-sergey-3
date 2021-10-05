@@ -1,7 +1,6 @@
 .blog-filter {
     padding-bottom: 20px;
     border-bottom: 2px solid $Mercury;
-    margin-bottom: 20px;
     &__form {
 
     }
@@ -72,14 +71,82 @@
 }
 .views {
     margin-right: 70px;
+    &__radio {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
 }
 .comments {
     margin-right: 137px;
+    &__checkbox:not(:last-child) {
+        margin-bottom: 10px;
+    }
 }
 .show-amount {
     margin-right: 76px;
+    &__radio {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
 }
 .sorting {
     margin-right: 48px;
+    &__radio {
+        &:not(:last-child) {
+            margin-bottom: 10px;
+        }
+    }
 }
 
+// Colored checkboxes
+
+.custom-checkbox_colored:nth-child(2)::before {
+    border-color: #2176FF;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(2)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%232176FF' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(4)::before {
+    border-color: #33A1FD;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(4)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%2333A1FD' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(6)::before {
+    border-color: #FDCA40;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(6)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%23FDCA40' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(8)::before {
+    border-color:#57E2E5;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(8)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%2357E2E5' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(10)::before {
+    border-color: #F79824;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(10)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%23F79824' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(12)::before {
+    border-color: #E08DAC;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(12)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%23E08DAC' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(14)::before {
+    border-color: #6A7FDB;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(14)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%236A7FDB' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.custom-checkbox_colored:nth-child(16)::before {
+    border-color: #45CB85;
+}
+.custom-checkbox__input:checked + .custom-checkbox_colored:nth-child(16)::after {
+    content: url("data:image/svg+xml,%3Csvg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6.75L5.91301 12.77C6.20128 13.2135 6.85836 13.1893 7.11327 12.7259L13.425 1.25' stroke='%2345CB85' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E");
+}

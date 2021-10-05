@@ -17,6 +17,15 @@ footer {
     line-height: 21px;
     text-align: center;
     margin-bottom: 30px;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+  }
+  &__button {
+    padding-left: 26px;
+    padding-right: 26px;
   }
 }
 .copyright {
@@ -24,6 +33,11 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
   &__first-line {
     margin-bottom: 5px;
   }
@@ -43,12 +57,29 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
   align-content: space-between;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   width: 318px;
-  height: 94px;
+  min-height: 94px;
   &__item {
     &:nth-child(3n+2) {
       margin: 0 10px;
     }
+  }
+}
+@media (max-width:420px) {
+  .social {
+    justify-content: space-between;
+    padding-left: 60px;
+    padding-right: 60px;
+    min-height: 146px;
+    &__item {
+      &:nth-child(3n+2) {
+        margin: 0;
+      }
+      &:first-child {
+        margin-left: 4px;
+      }
+    }
+
   }
 }

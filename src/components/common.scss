@@ -16,6 +16,12 @@ $time:.4s;
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
+  @media (max-width:1100px) {
+    margin: 0 60px;
+  }
+  @media (max-width:500px) {
+    margin: 0 20px;
+  }
 }
 img {
   display: block;
@@ -31,6 +37,11 @@ body {
 }
 h1 {
   margin: 0;
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 47px;
+  line-height: 57px;
 }
 h2 {
   font-family: Gilroy;
@@ -160,20 +171,22 @@ button {
   fill: #070707;
 }
 
-
+%hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.hidden {
+  display: none;
+}
 // custom check-box
 
 .custom-checkbox {
   height: 25px;
   position: relative;
   padding-left: 37px;
-  &__input {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-  }
   &::before {
     content: '';
     position: absolute;
@@ -181,9 +194,16 @@ button {
     width: 25px;
     height: 25px;
     margin-left: -37px;
-    border: 2.5px solid #070707;
+    border: 2.5px solid #E5E5E5;
     border-radius: 5px;
     box-sizing: border-box;
+    transition: $time;
+  }
+  &__input {
+    @extend %hidden;
+  }
+  &:hover::before {
+    border-color: $Gray;
   }
 }
 
@@ -193,6 +213,9 @@ button {
     left: 5px;
     top:3px;
 }
+.custom-checkbox__input:checked + .custom-checkbox:not(.custom-checkbox_colored)::before {
+  border-color: Black;
+} 
 .custom-checkbox_no-label {
   padding-left: 0;
 }
@@ -200,6 +223,82 @@ button {
   margin-left: 0;
   position: relative;
 }
+.custom-checkbox-mini {
+  position: relative;
+  padding-left: 38px;
+  &::before {
+    @extend %psevdo;
+    content: '';
+    width: 19px;
+    height: 19px;
+    border: 2px solid $Mercury;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: $time;
+  }
+  &:hover::before {
+    border-color: $Gray;
+  }
+}
+.custom-checkbox-mini-input:checked + .custom-checkbox-mini::before {
+  border-color: Black;
+}
+.custom-checkbox-mini-input:checked + .custom-checkbox-mini::after {
+  @extend %psevdo;
+  content: url('/static/images/check-mark-mini.svg');
+  height: 14px;
+  top: 0px;
+  left: 4px;
+}
+
+// Custom radio-buttons
+
+.custom-radio-input {
+  @extend %hidden;
+}
+.custom-radio-label {
+  height: 25px;
+  position: relative;
+  padding-left: 37px;
+  line-height: 21px;
+  padding-top: 2px;
+  &::before {
+    @extend %psevdo;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 25px;
+    height: 25px;
+    border: 2.5px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 30px;
+    transition: $time;
+  }
+}
+.custom-radio-input:hover + .custom-radio-label::before {
+  border-color: $Gray;
+}
+.custom-radio-input:checked + .custom-radio-label::before {
+  border-color: Black;
+}
+.custom-radio-label::after {
+    @extend %psevdo;
+    content: '';
+    background-color: $Mercury;
+    top: 6px;
+    left: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 30px;
+    transition: $time;
+}
+.custom-radio-input:hover + .custom-radio-label::after {
+  background-color: $Gray;
+}
+.custom-radio-input:checked + .custom-radio-label::after {
+  background-color: Black;
+}
+
 
 
 // Modal Popups
@@ -219,7 +318,10 @@ button {
 .required-field {
   color: $Pomegranate;
 }
-input[type="text"] {
+input[type="text"],
+input[type="password"],
+textarea,
+input[type="phone"] {
     height: 50px;
     width: 100%;
     padding: 2.5px;
@@ -260,6 +362,98 @@ input[type="text"] {
   }
 }
 
+// Self-Made-Grid
+
+$numberColumns: 12;
+$gap:20px;
+$gap-mobile: 16px;
+
+$size-xl:1200px;
+$size-lg:1000px;
+$size-md:768px;
+$size-sm:576px;
+
+@mixin media-interval ($min, $max) {
+  @if $max == 0 {
+    $max: 9999px;
+  }
+  @media (min-width: ($min + 1px)) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin create-grid ($type-width, $media-size) {
+  @if $media-size == "full" {
+    .container {
+      max-width: 100%;
+    }
+  } @else {
+      .container {
+        max-width: $media-size - $gap*2;
+      }
+    }
+  @for $i from 1 through $numberColumns {
+    .col-#{$type-width}-#{$i} {
+      width: (100% / $numberColumns) * $i;
+    }
+  
+    .skip-#{$type-width}-#{$i} {
+      margin-left: (100% / $numberColumns) * $i;
+    }
+    .add-#{$type-width}-#{$i} {
+      margin-right: (100% / $numberColumns) * $i;
+    }
+  }
+}
+
+@include media-interval($size-xl, 0) {
+  @include create-grid(xl, $size-xl);
+}
+@include media-interval($size-lg, $size-xl) {
+  @include create-grid(lg, $size-lg);
+}
+@include media-interval($size-md, $size-lg) {
+  @include create-grid(md, $size-md);
+}
+@include media-interval($size-sm, $size-md) {
+  @include create-grid(sm, $size-sm);
+}
+@include media-interval(0, $size-sm) {
+  @include create-grid(xs, "full");
+}
+
+.container {
+  padding-left: $gap/2;
+  padding-right: $gap/2;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container-fluid {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: $gap;
+  padding-right: $gap;
+}
+
+.row {
+  display: flex;
+  margin: (-$gap) (-$gap) 0 (-$gap);
+}
+
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+div[class^="col"] {
+  box-sizing: border-box;
+  padding: $gap $gap/2 0 $gap/2;
+}
 
 
 
@@ -275,6 +469,10 @@ input[type="text"] {
 @import "./modalRegister/modalRegister";
 @import "./modalSendMessage/modalSendMessage";
 @import "./blogFilter/blogFilter";
+@import "./blogSection/blogSection";
+@import "./blogPosts/blogPosts";
+@import "./blogPagination/blogPagination";
+@import "./profileSection/profileSection";
 
 .modal-open {
   display: block

@@ -10,11 +10,14 @@
         margin-bottom: 50px;
     }
     &__container {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        width: 100%;
         max-width: 1000px;
+    }
+}
+
+@media (max-width:880px) {
+}
+@media (max-width:600px) {
+    .skills-list__container .row{
         justify-content: space-between;
     }
 }

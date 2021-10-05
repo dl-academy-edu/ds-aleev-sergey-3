@@ -1,7 +1,8 @@
-<section class="skills-list">
+<section class="skills-list grid">
     <h2 class="skills-list__title">Skills</h2>
     <p class="skills-list__text">I work in such programs as</p>
-    <div class="skills-list__container">
+    <div class="skills-list__container container">
+        <div class="row flex-wrap">
         @@include('skillsCard/index.html', {
             "src":"skillsPicture1.svg",
             "cardName": "HTML5",
@@ -27,5 +28,6 @@
             "cardName": "Figma",
             "skillPercent": "90%"
         })
+    </div>
     </div>
 </section>

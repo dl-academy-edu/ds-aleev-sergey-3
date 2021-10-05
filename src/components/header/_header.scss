@@ -8,7 +8,7 @@
   flex-direction: row-reverse;
   justify-content: space-between;
   border-bottom: 1px solid $Gray;
-  padding: 33px 0 32px 10px;
+  padding: 33px 0 32px 0;
   &__home {
     transition: $time;
     color: black;
@@ -18,21 +18,69 @@
   display: flex;
   &__item {
     color: $Gray;
-    margin-left: 20px;
     transition: $time;
     &:hover {
       color: black;
       cursor: pointer;
 
     }
-    &:last-child {
-      display: none;
-    }
   }
+}
+.nav-list__item a,
+.nav-list__item button {
+  margin-left: 20px;
 }
 .nav-list:hover ~ .navigation__home {
   color: $Gray;
 }
 .nav-list button:hover {
   cursor: pointer;
+}
+.header-menu {
+  display: none;
+  position: absolute;
+  top: 170px;
+  right: 20px;
+}
+.mobile-menu {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $Wild-Sand-Opacity;
+  &__close {
+    position: absolute;
+    right: 13px;
+    top: 50px;
+  }
+  &__list {
+    position: absolute;
+    right: 20px;
+    top: calc(50% - 42px/2 - 123px);
+  }
+  &__item {
+    text-align: right;
+    font-family: Gilroy;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 34px;
+    line-height: 41px;
+    color: $Gray;
+    &:first-child {
+      color: Black;
+    }
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+}
+@media (max-width:400px) {
+  .header-menu {
+    display: block;
+  }
+  .navigation {
+    display: none;
+  }
 }

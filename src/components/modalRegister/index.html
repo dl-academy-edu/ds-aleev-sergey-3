@@ -1,39 +1,39 @@
 <div class="modal-popup modal-register">
-    <form class="modal-content" action="">
+    <form class="modal-content js-register" action="">
         <label for="email-modal-register">Email<span class="required-field">*</span></label>
-        <input type="text" id="email-modal-register">
+        <input type="text" id="email-modal-register" name="email" value="123">
         <div class="modal-two-column">
             <label for="name-modal-register">Name<span class="required-field">*</span>
-                <input type="text" id="name-modal-register">
+                <input type="text" id="name-modal-register" name="name">
             </label>
             <label for="surname-modal-register">Surname<span class="required-field">*</span>
-                <input type="text" id="surname-modal-register">
+                <input type="text" id="surname-modal-register" name="surname">
             </label>
 
         </div>
         <div class="modal-two-column">
             <label for="password-modal-register">Password<span class="required-field">*</span>
-                <input class="custom-text-input" type="text" id="password-modal-register">
+                <input class="custom-text-input" type="text" id="password-modal-register" name="password">
             </label>
             <label for="repeat-modal-register">Repeat password<span class="required-field">*</span>
-                <input type="text" id="repat-modal-register">
+                <input type="text" id="repeat-modal-register">
             </label>
         </div>
         <div class="modal-two-column">
             <label for="location-modal">Location<span class="required-field">*</span>
-                <input type="text" id="location-modal-register">
+                <input type="text" id="location-modal-register" name="location">
             </label>
 
             <label for="age-modal-register">Age<span class="required-field">*</span>
-                <input type="text" id="age-modal-register">
+                <input type="text" id="age-modal-register" name="age">
             </label>
 
         </div>
         <div class="modal-register__ckeckbox">
-            <input type="checkbox" id="checkbox-modal-register">
-            <label for="checkbox-modal-register">Clicking on the button, you consent to the processing of your personal data.</label>
+            <input class="custom-checkbox-mini-input" type="checkbox" id="checkbox-modal-register" checked>
+            <label class="custom-checkbox-mini" for="checkbox-modal-register">Clicking on the button, you consent to the processing of your personal data.</label>
         </div>
-        <button type="submit" class="btn-white modal-content__button">Sign up</button>
+        <button type="submit" class="btn-white modal-content__button js-register-submit">Sign up</button>
     </form>
     <svg class="modal-close" width="26" height="26" viewBox="0 0 26 26" fill="#828282">
         <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>

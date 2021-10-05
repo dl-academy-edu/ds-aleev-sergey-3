@@ -7,6 +7,9 @@
         margin-bottom: 20px;
     }
 }
+.modal-register__ckeckbox input {
+    @extend %hidden;
+}
 .modal-register .modal-content {
     width: 680px;
 }
