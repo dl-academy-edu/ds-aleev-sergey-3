@@ -9,7 +9,9 @@
   display: block;
   position: absolute;
   }
-$time:.4s;
+$time: 0.4s;
+
+$default-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 .grid{
   display: flex;
   flex-direction: column;
@@ -25,30 +27,30 @@ $time:.4s;
 }
 img {
   display: block;
-  max-width: 100%;
+  // max-width: 100%;
   height: auto;
 }
 body {
   font-size: 18px;
-  line-height: 22px;
-  font-family: 'Gilroy';
+  line-height: calc(22/18);
+  font-family: Gilroy, $default-sans-serif;
   font-weight: normal;
   font-style: normal;
 }
 h1 {
   margin: 0;
-  font-family: Gilroy;
+  font-family: Gilroy, $default-sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 47px;
-  line-height: 57px;
+  line-height: calc(57/47);
 }
 h2 {
-  font-family: Gilroy;
+  font-family: Gilroy, $default-sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 34px;
-  line-height: 41px;
+  line-height: calc(41/34);
 }
 a {
   text-decoration: none;
@@ -84,7 +86,7 @@ button {
 .btn-white,
 .btn-bad,
 .btn-good {
-  font-family: Gilroy;
+  font-family: Gilroy, $default-sans-serif;
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -260,7 +262,6 @@ button {
   height: 25px;
   position: relative;
   padding-left: 37px;
-  line-height: 21px;
   padding-top: 2px;
   &::before {
     @extend %psevdo;
@@ -299,29 +300,76 @@ button {
   background-color: Black;
 }
 
+// Custom input File
 
+.custom-file-input {
+  display: none;
+}
+.custom-file-input-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  &__box {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    margin-top: 6px;
+    height: 50px;
+    width: 100%;
+    border: 2px solid #E5E5E5;
 
+  }
+  &__file-name {
+    font-family: Gilroy, $default-sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: calc(21/18);
+    margin-left: 10px;
+  }
+}
 // Modal Popups
 
+.modal-background {
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: $Wild-Sand-Opacity;
+  @media(max-width:450px) {
+    background-color: white;
+  }
+}
+.modal-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .modal-content {
+  background-color: white;
   padding: 40px;
   border: 2.5px solid #070707;
   display: flex;
   flex-direction: column;
   &__button {
+    margin-top: 20px;
       align-self: flex-start;
+  }
+  @media(max-width:450px) {
+    border: none;
+    padding: 20px;
   }
 }
 .modal-background {
+  z-index: 1;
   display: none;
 }
 .required-field {
   color: $Pomegranate;
 }
-input[type="text"],
-input[type="password"],
-textarea,
-input[type="phone"] {
+.custom-input,
+textarea {
     height: 50px;
     width: 100%;
     padding: 2.5px;
@@ -337,12 +385,19 @@ input[type="phone"] {
         cursor: text;
     }
 }
+
+.custom-input_bad {
+  border-color: $Pomegranate;
+}
 .modal-content label + input,
 .modal-content label input,
 .modal-content textarea {
   margin-top: 6px;
-  margin-bottom: 20px;
 }
+.modal-content > label {
+  margin-top: 20px;
+}
+
 .modal-content textarea {
   resize: none;
   height: 150px;
@@ -355,12 +410,103 @@ input[type="phone"] {
   cursor: pointer;
   top: 0;
   right: -36px;
-  transition: $time;
+  transition: fill $time;
   &:hover,
   &:active {
       fill: #070707;
   }
+  @media(max-width:450px) {
+    top: -20px;
+    left: 20px;
+  }
 }
+.modal-two-column {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+.modal-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+// .modal-row label {
+//   margin-bottom: auto;
+// }
+// .modal-row input {
+//   margin-bottom: auto;
+// }
+.modal-two-column label {
+  width: 100%;
+  &:first-child {
+      margin-right: 20px;
+  }
+}
+
+.modal-caption {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Gilroy, $default-sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: calc(29/24);
+  text-align: center;
+  max-width: 475px;
+  width: 100%;
+  &_bad {
+    color: $Pomegranate;
+  }
+  &_good {
+    color: $Malachite;
+  }
+  @media(max-width:530px) {
+    padding: 0 20px;
+  }
+}
+.input-caption {
+  margin-top: 10px;
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: calc(14/16);
+  &_bad {
+    color: $Pomegranate;
+  }
+  &_good {
+    color: $Malachite;
+  }
+}
+
+// кнопка прокрутки
+
+.btn-scroll-up {
+  opacity: 0;
+  transition: 0.4s;
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+  &:hover {
+    
+  }
+  z-index: 2;
+  position: fixed;
+  @media (min-width:1151px) {
+    transform: translate(1000px, 70vh);
+  }
+  @media (max-width:1150px) {
+    top: 85vh;
+    right: 0;
+  }
+}
+.scroll-show {
+  opacity: 1;
+}
+
+
 
 // Self-Made-Grid
 
@@ -469,11 +615,23 @@ div[class^="col"] {
 @import "./modalRegister/modalRegister";
 @import "./modalSendMessage/modalSendMessage";
 @import "./blogFilter/blogFilter";
-@import "./blogSection/blogSection";
 @import "./blogPosts/blogPosts";
 @import "./blogPagination/blogPagination";
 @import "./profileSection/profileSection";
+@import "./modalChangePassword/modalChangePassword";
+@import "./modalChangeOtherData/modalChangeOtherData";
 
 .modal-open {
   display: block
+}
+.closed {
+  display:none;
+}
+.modal-caption ~ .modal-close {
+  left: 590px;
+  top: -40px;
+  @media(max-width:680px) {
+    left: 20px;
+    top: 20px;
+  }
 }

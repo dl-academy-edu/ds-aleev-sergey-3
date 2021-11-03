@@ -1,42 +1,48 @@
-<div class="modal-popup modal-register">
+<div class="modal-background modal-register">
+    <div class="modal-popup">
     <form class="modal-content js-register" action="">
         <label for="email-modal-register">Email<span class="required-field">*</span></label>
-        <input type="text" id="email-modal-register" name="email" value="123">
+        <input type="text" id="email-modal-register" name="email" value="123" class="custom-input email required">
         <div class="modal-two-column">
-            <label for="name-modal-register">Name<span class="required-field">*</span>
-                <input type="text" id="name-modal-register" name="name">
-            </label>
-            <label for="surname-modal-register">Surname<span class="required-field">*</span>
-                <input type="text" id="surname-modal-register" name="surname">
-            </label>
-
+            <div class="modal-row">
+                <label for="name-modal-register">Name<span class="required-field">*</span></label>
+                <input type="text" id="name-modal-register" name="name" class="custom-input required">
+            </div>
+            <div class="modal-row">
+                <label for="surname-modal-register">Surname<span class="required-field">*</span></label>
+                <input type="text" id="surname-modal-register" name="surname" class="custom-input required">
+            </div>
         </div>
         <div class="modal-two-column">
-            <label for="password-modal-register">Password<span class="required-field">*</span>
-                <input class="custom-text-input" type="text" id="password-modal-register" name="password">
-            </label>
-            <label for="repeat-modal-register">Repeat password<span class="required-field">*</span>
-                <input type="text" id="repeat-modal-register">
-            </label>
+            <div class="modal-row">
+                <label for="password-modal-register">Password<span class="required-field">*</span></label>
+                <input type="text" id="password-modal-register" name="password" class="custom-input required">
+            </div>
+            <div class="modal-row">
+                <label for="repeat-modal-register">Repeat password<span class="required-field">*</span></label>
+                <input type="text" id="repeat-modal-register" name="repeat-password" class="custom-input required">
+            </div>
         </div>
         <div class="modal-two-column">
-            <label for="location-modal">Location<span class="required-field">*</span>
-                <input type="text" id="location-modal-register" name="location">
-            </label>
-
-            <label for="age-modal-register">Age<span class="required-field">*</span>
-                <input type="text" id="age-modal-register" name="age">
-            </label>
-
+            <div class="modal-row">
+                <label for="location-modal-register">Location<span class="required-field">*</span></label>
+                <input type="text" id="location-modal-register" name="location" class="custom-input required">
+            </div>
+            <div class="modal-row">
+                <label for="age-modal-register">Age<span class="required-field">*</span></label>
+                <input type="text" id="age-modal-register" name="age" class="custom-input age required">
+            </div>
         </div>
         <div class="modal-register__ckeckbox">
             <input class="custom-checkbox-mini-input" type="checkbox" id="checkbox-modal-register" checked>
             <label class="custom-checkbox-mini" for="checkbox-modal-register">Clicking on the button, you consent to the processing of your personal data.</label>
         </div>
         <button type="submit" class="btn-white modal-content__button js-register-submit">Sign up</button>
+
     </form>
     <svg class="modal-close" width="26" height="26" viewBox="0 0 26 26" fill="#828282">
         <rect x="2.82861" width="32" height="4" rx="2" transform="rotate(45 2.82861 0)"/>
         <rect y="22.6289" width="32" height="4" rx="2" transform="rotate(-45 0 22.6289)"/>
     </svg>
+    </div>
 </div>

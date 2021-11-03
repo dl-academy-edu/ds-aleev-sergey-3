@@ -22,7 +22,7 @@ img[alt="Git/GitHub"] {
 .skill-card__bar p {
     color: #828282;
     font-size: 14px;
-    line-height: 17px;
+    line-height: calc(17/14);
     margin-right: 12px;
 }
 @media (max-width:1200px) {

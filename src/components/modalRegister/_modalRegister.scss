@@ -1,25 +1,45 @@
-.modal-register {
+.modal-register .modal-popup {
     width: 100%;
-    max-width: 680px;
-    margin: 42px;
-    display: none;
+    max-width: calc(680px + 84px);
+    padding: 42px;
+    @media (max-width:760px) {
+        padding: 0;
+    }  
+}
+.modal-register .modal-close {
+
+}
+.modal-register .modal-close {
+    top: 42px;
+    left: calc(680px + 42px + 10px);
+}
+.modal-register {
+
     &__ckeckbox {
-        margin-bottom: 20px;
+        margin-top: 20px;
     }
+    
 }
 .modal-register__ckeckbox input {
     @extend %hidden;
 }
-.modal-register .modal-content {
-    width: 680px;
-}
-.modal-two-column {
-    display: flex;
-    
-}
-.modal-two-column label {
-    width: 100%;
-    &:first-child {
-        margin-right: 20px;
+@media (max-width:760px) {
+    .modal-register {
+        background-color: #fff;
     }
+    .modal-register .modal-content {
+        border: none;
+        padding: 20px;
+    }
+    .modal-register .modal-close {
+        top: -20px;
+        left: 20px;
+    }
+}
+@media (max-width:364px) {
+    // .modal-row label {
+    //     height: 100%;
+    //     overflow: hidden;
+    //     max-height: 44px;
+    // }
 }

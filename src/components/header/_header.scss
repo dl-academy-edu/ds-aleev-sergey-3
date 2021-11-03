@@ -1,9 +1,7 @@
 .navigation {
-  font-family: Gilroy;
+  font-family: Gilroy, $default-sans-serif;
   font-style: normal;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 22px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -39,8 +37,14 @@
 .header-menu {
   display: none;
   position: absolute;
-  top: 170px;
+  height: 32px;
+  width: 32px;
+  top: 50px;
   right: 20px;
+}
+
+.main .header-menu {
+  top: 175px;
 }
 .mobile-menu {
   display: none;
@@ -62,7 +66,7 @@
   }
   &__item {
     text-align: right;
-    font-family: Gilroy;
+    font-family: Gilroy, $default-sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 34px;

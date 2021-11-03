@@ -1,6 +1,9 @@
 .main-picture-slider {
     align-items: center;
 }
+.main-picture-slider img {
+    max-width: 100%;
+}
 .slider {
     margin-bottom: 60px;
     &__wrapper {
@@ -39,7 +42,7 @@
     &__heading {
         width: 250px;
         font-size: 47px;
-        line-height: 57px;
+        line-height: calc(57/47);
     }
     &__wrapper {
         display: flex;

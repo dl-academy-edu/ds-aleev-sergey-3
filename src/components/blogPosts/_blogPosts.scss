@@ -1,7 +1,6 @@
-
 .blog-card {
     display: flex;
-    margin-top: 20px;
+    padding-top: 20px;
     &:not(:last-child) {
         border-bottom: 2px solid $Mercury;
         padding-bottom: 20px;
@@ -16,14 +15,23 @@
         width: 320px;
         height: 236px;
         flex-shrink: 0;
+        overflow: hidden;
     }
     &__picture-item {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
     }
     &__tags {
         display: flex;
     }
     &__description {
+        font-family: Gilroy, $default-sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: $Gray;
+        line-height: calc(16/14);
         display: flex;
         margin-top: 10px;
         margin-bottom: 15px;
@@ -33,37 +41,68 @@
     }
     &__title {
         margin-bottom: 10px;
-        font-family: Gilroy;
+        max-height: 58px;
+        overflow: hidden;
+        font-family: Gilroy, $default-sans-serif;
         font-style: normal;
         font-weight: bold;
         font-size: 24px;
-        line-height: 29px;
+        line-height: calc(29/24);
     }
     &__text {
-        margin-bottom: 20px;
-        font-family: Gilroy;
+        font-family: Gilroy, $default-sans-serif;
         font-style: normal;
         font-weight: 500;
-        font-size: 18px;
-        line-height: 21px;
         overflow: hidden;
         margin-bottom: auto;
     }
     &__link {
-        font-family: Gilroy;
+        padding-top: 20px;
+        font-family: Gilroy, $default-sans-serif;
         font-style: normal;
         font-weight: bold;
-        font-size: 18px;
-        line-height: 22px;
         border-bottom: 1px dashed #070707;
     }
 }
 .blog-card-tag {
     width: 30px;
     height: 10px;
-    background: #45CB85;
+    // background: #45CB85;
     border-radius: 5px;
     &:not(:last-child) {
         margin-right: 5px;
+    }
+}
+
+@media (max-width:930px) {
+    .blog-card {
+        height: 310px;
+    }
+    .blog-card__text {
+        max-height: 68px;
+    }
+    .blog-card__picture {
+        width: 314px;
+        height: 268px;
+        
+    }
+}
+@media (max-width:750px) {
+    .blog-card {
+        height: 100%;
+        flex-direction: column;
+        &__picture {
+            width: 280px;
+        }
+        &__wrapper {
+            padding: 20px 0;
+        }
+    }
+}
+@media (max-width:500px) {
+    .blog-card {
+        &__picture {
+            height: 280px;
+        }
     }
 }

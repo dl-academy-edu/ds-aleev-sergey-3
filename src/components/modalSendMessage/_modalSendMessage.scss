@@ -1,0 +1,26 @@
+.modal-send-message .modal-popup {
+    max-width: 680px;
+    width: 100%;
+}
+
+.modal-content__checkbox {
+    
+}
+@media (max-width:780px) {
+    .modal-send-message {
+        background-color: white;
+    }
+    .modal-send-message .modal-close {
+    top: -20px;
+    left: 20px;
+    }
+    .modal-send-message .modal-content {
+        border: none;
+        padding: 20px;
+    }
+}
+@media (max-width:400px) {
+    .modal-send-message .modal-row label {
+        height: 44px;
+    }
+}

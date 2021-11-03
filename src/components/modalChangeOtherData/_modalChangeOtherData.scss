@@ -1,0 +1,24 @@
+.modal-change-other-data .modal-popup {
+    max-width: 680px;
+    width: 100%;
+    @media(max-width:800px) {
+    }
+}
+@media(max-width:800px) {
+    .modal-change-other-data .modal-close {
+        right: 0;
+        top: -36px;
+    }
+}
+@media(max-width:720px) {
+    .form-change-other-data {
+        border: none;
+    }
+    .modal-change-other-data {
+        background-color: white;
+    }
+    .modal-change-other-data .modal-close {
+        left: 40px;
+        top: 0px;
+    }
+}

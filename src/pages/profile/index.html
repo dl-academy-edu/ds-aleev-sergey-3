@@ -11,7 +11,6 @@
     <link href="style.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/fonts/gilroy.css" />
     <link rel="shortcut icon" href="/static/images/favicon.ico">
-    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <title>My Profile</title>
   </head>
   <body>
@@ -21,6 +20,12 @@
       @@include('profileSection/index.html')
       
     </main>
+    @@include('modalSignIn/index.html')
+    @@include('modalRegister/index.html')
+
+    @@include('modalChangePassword/index.html')
+    @@include('modalChangeOtherData/index.html')
+    
     <script src="index.js"></script>
   </body>
 </html>

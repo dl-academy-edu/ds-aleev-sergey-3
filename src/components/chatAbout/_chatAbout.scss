@@ -6,8 +6,8 @@
     padding-bottom: 62px;
     &__title {
         font-size: 34px;
-        line-height: 41px;
-        font-family: 'Gilroy';
+        line-height: calc(41/34);
+        font-family: Gilroy, $default-sans-serif;
         font-weight: bold;
         font-style: normal;
         margin-bottom: 51px;
@@ -29,15 +29,18 @@
             @extend %psevdo;
             content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='22' viewBox='0 0 42 20' fill='none'%3E%3Cpath d='M40 0 L 20 20 L0 0' fill='%23F6F6F6' stroke='%23070707' stroke-width='2'/%3E%3Cpath d='M0 0 L42 0' stroke='%23F6F6F6' stroke-width='2'/%3E%3C/svg%3E");
             bottom: -20px;
-            // background-color: $Wild-Sand;
-            right: 25px;
+            left: 25px;
             height: 22px;
+        }
+        &:nth-child(even) {
+            align-self: flex-end;
+            &::after {
+                left: auto;
+                right: 25px;
+            }
         }
         &:not(:last-child) {
             margin-bottom: 40px;
-        }
-        &:nth-child(even) {
-            align-self: flex-end; 
         }
     }
     &__text {

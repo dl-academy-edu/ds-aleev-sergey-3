@@ -16,6 +16,11 @@
   <body>
     @@include('header/index.html')
     <main class="grid">
+      <div class="scroll">
+        <button type="button" class="btn-scroll-up">
+          <img src="../../static/images/scroll-btn.svg" alt="">
+        </button>
+      </div>
         <h1 class="blog-title">My blog</h1>
         @@include('blogFilter/index.html')
         
@@ -28,6 +33,11 @@
     <div class="another-background">
         @@include('footer/index.html')
     </div>
+    
+    @@include('modalSignIn/index.html')
+    @@include('modalRegister/index.html')
+    
+    @@include('modalSendMessage/index.html')
 
     <script src="index.js"></script>
   </body>

@@ -1,23 +1,6 @@
-.modal-popup {
-    display: none;
-}
-.modal-background {
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    background-color: $Wild-Sand-Opacity;
-}
-.modal-popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.modal-sign-in {
+
+.modal-sign-in .modal-popup {
     width: 100%;
-    max-width: 290px;
+    max-width: 370px;
 }
 

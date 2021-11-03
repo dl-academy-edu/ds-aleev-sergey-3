@@ -7,6 +7,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <link href="/colors.css" rel="stylesheet" /> -->
     <link href="/common.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
     <link rel="stylesheet" href="/static/fonts/gilroy.css" />
@@ -14,10 +15,16 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
     <title>Main</title>
   </head>
-  <body>
+  <body class="main">
     @@include('header/index.html')
+
     <main class="">
-      
+      <div class="grid scroll">
+        <button type="button" class="btn-scroll-up">
+          <img src="../../static/images/scroll-btn.svg" alt="">
+        </button>
+      </div>
+
       @@include('mainPictureSlider/index.html')
 
       <div class="another-background">
@@ -32,13 +39,11 @@
 
     </main>
     @@include('footer/index.html')
-    <div class="modal-background">
+    
     @@include('modalSignIn/index.html')
-
     @@include('modalRegister/index.html')
-
+    
     @@include('modalSendMessage/index.html')
-    </div>
 
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
     <script src="scripts.js"></script>
