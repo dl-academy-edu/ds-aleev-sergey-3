@@ -1,9 +1,6 @@
 .blog-filter {
     padding-bottom: 20px;
     border-bottom: 2px solid $Mercury;
-    &__form {
-
-    }
     &__selectors {
         flex-wrap: wrap;
         align-items: flex-start;
@@ -14,9 +11,6 @@
     }
     &__search {
         align-items: center;
-    }
-    &__column {
-
     }
     &__titles {
         margin-bottom: 10px;
@@ -30,11 +24,13 @@
         margin-left: 39px;
     }
 }
+.blog-filter label {
+    cursor: pointer;
+}
 .filter-reset {
     margin-top: 19px;
     &__label {
         text-align: center;
-        
         margin-bottom: 5px;
         font-family: Gilroy, $default-sans-serif;
         font-style: normal;

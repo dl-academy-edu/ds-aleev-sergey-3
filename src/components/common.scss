@@ -12,6 +12,7 @@
 $time: 0.4s;
 
 $default-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
 .grid{
   display: flex;
   flex-direction: column;
@@ -103,7 +104,7 @@ button {
   &:hover,
   &:focus {
     background-color: white;
-    color: #070707;
+    color: black;
   }
 }
 .btn-white {
@@ -161,6 +162,7 @@ button {
     padding-left: 13px;
   }
 }
+
 // custom radio-button
 
 .custom-radio {
@@ -172,7 +174,6 @@ button {
 .custom-radio:checked + label svg {
   fill: #070707;
 }
-
 %hidden {
   position: absolute;
   width: 1px;
@@ -183,6 +184,7 @@ button {
 .hidden {
   display: none;
 }
+
 // custom check-box
 
 .custom-checkbox {
@@ -317,7 +319,6 @@ button {
     height: 50px;
     width: 100%;
     border: 2px solid #E5E5E5;
-
   }
   &__file-name {
     font-family: Gilroy, $default-sans-serif;
@@ -327,6 +328,7 @@ button {
     margin-left: 10px;
   }
 }
+
 // Modal Popups
 
 .modal-background {
@@ -349,7 +351,7 @@ button {
 .modal-content {
   background-color: white;
   padding: 40px;
-  border: 2.5px solid #070707;
+  border: 3px solid black;
   display: flex;
   flex-direction: column;
   &__button {
@@ -362,7 +364,7 @@ button {
   }
 }
 .modal-background {
-  z-index: 1;
+  z-index: 10;
   display: none;
 }
 .required-field {
@@ -373,7 +375,7 @@ textarea {
     height: 50px;
     width: 100%;
     padding: 2.5px;
-    border: 2.5px solid #E5E5E5;
+    border: 3px solid #E5E5E5;
     transition: $time;
     outline: none;
     &:hover {
@@ -385,7 +387,6 @@ textarea {
         cursor: text;
     }
 }
-
 .custom-input_bad {
   border-color: $Pomegranate;
 }
@@ -431,12 +432,6 @@ textarea {
   flex-direction: column;
   justify-content: flex-start;
 }
-// .modal-row label {
-//   margin-bottom: auto;
-// }
-// .modal-row input {
-//   margin-bottom: auto;
-// }
 .modal-two-column label {
   width: 100%;
   &:first-child {
@@ -489,9 +484,6 @@ textarea {
   transition: 0.4s;
   cursor: pointer;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
-  &:hover {
-    
-  }
   z-index: 2;
   position: fixed;
   @media (min-width:1151px) {
@@ -505,7 +497,6 @@ textarea {
 .scroll-show {
   opacity: 1;
 }
-
 
 
 // Self-Made-Grid
@@ -574,50 +565,49 @@ $size-sm:576px;
   margin-left: auto;
   margin-right: auto;
 }
-
 .container-fluid {
   width: 100%;
   box-sizing: border-box;
   padding-left: $gap;
   padding-right: $gap;
 }
-
 .row {
   display: flex;
   margin: (-$gap) (-$gap) 0 (-$gap);
 }
-
 .col {
   flex-basis: 0;
   flex-grow: 1;
 }
-
 .flex-wrap {
   flex-wrap: wrap;
 }
-
 div[class^="col"] {
   box-sizing: border-box;
   padding: $gap $gap/2 0 $gap/2;
 }
 
 
-
 // Подключение компонентов
 @import "./header/header";
-@import "./footer/footer";
-@import "./chatAbout/chatAbout";
+
 @import "./mainPictureSlider/mainPictureSlider";
+@import "./profileSection/profileSection";
+@import "./blogFilter/blogFilter";
+
+@import "./chatAbout/chatAbout";
 @import "./skillsList/skillsList";
 @import "./skillsCard/skillsCard";
 @import "./portfolio/portfolio";
-@import "./modalSignIn/modalSignIn";
-@import "./modalRegister/modalRegister";
-@import "./modalSendMessage/modalSendMessage";
-@import "./blogFilter/blogFilter";
+
 @import "./blogPosts/blogPosts";
 @import "./blogPagination/blogPagination";
-@import "./profileSection/profileSection";
+
+@import "./footer/footer";
+@import "./modalRegister/modalRegister";
+@import "./modalSignIn/modalSignIn";
+@import "./modalSendMessage/modalSendMessage";
+
 @import "./modalChangePassword/modalChangePassword";
 @import "./modalChangeOtherData/modalChangeOtherData";
 

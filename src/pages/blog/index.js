@@ -310,7 +310,6 @@ sendRequestXML({
                 }
                 let linkPost = document.querySelectorAll('.blog-posts-pagination__link')
                 
-                // console.log(linkPost)
                 linkPost.forEach(link => {
                     let linkIndex = +link.textContent
                     link.addEventListener('click', (e) =>{
@@ -319,10 +318,17 @@ sendRequestXML({
                         clearPosts()
                         let arrayPosts = showNextPosts(posts.data, maxPosts, linkIndex)
                         createPosts (arrayPosts)
-                        // console.log(arrayPosts)
                     })
                 })
-                
+                buttonPost[0].addEventListener('click', link => {
+                    link = document.querySelector('.blog-posts-pagination__link_active').previousElementSibling
+                    activatePaginationButton(link, posts.data, maxPosts)
+                    
+                })
+                buttonPost[1].addEventListener('click', link => {
+                    link = document.querySelector('.blog-posts-pagination__link_active').nextElementSibling
+                    activatePaginationButton(link, posts.data, maxPosts)
+                })
                 createPosts (postsToShow)
                 
             }
@@ -340,6 +346,7 @@ function clearPosts() {
     }
 }
 // подсветка активной страницы
+
 function activateLink (link) {
     let deleteActive = document.querySelector('.blog-posts-pagination__link_active')
     deleteActive.classList.remove('blog-posts-pagination__link_active')
@@ -364,7 +371,6 @@ function FilterNew(e) {
     getParams(data)
     setSearchParams(data)
     let params = getParamsFromLocation()
-    console.log(params)
 
     clearPosts()
     clearLinks()
@@ -380,25 +386,33 @@ function FilterNew(e) {
                 maxPosts = params.limit
             } else { maxPosts = 5 }
             
-            console.log(posts)
             createPage(posts.length, maxPosts)
 
             let postsToShow = displayFirstPosts(posts, maxPosts)
-            console.log(postsToShow)
             // let cardPost = showNextPosts(posts, maxPosts, 1)
             
             let linkPost = document.querySelectorAll('.blog-posts-pagination__link')
+
             linkPost.forEach(link => {
                 let linkIndex = +link.textContent
                 link.addEventListener('click', (e) => {
                     activateLink (link)
-                    console.log(linkIndex)
+                    
                     clearPosts()
                     let arrayPosts = showNextPosts(posts, maxPosts, linkIndex)
                     createPosts (arrayPosts)
-                    
                 })
             })
+
+            buttonPost[0].addEventListener('click', link => {
+                link = document.querySelector('.blog-posts-pagination__link_active').previousElementSibling
+                activatePaginationButton(link, posts.data, maxPosts)
+            })
+            buttonPost[1].addEventListener('click', link => {
+                link = document.querySelector('.blog-posts-pagination__link_active').nextElementSibling
+                activatePaginationButton(link, posts.data, maxPosts)
+            })
+
             createPosts (postsToShow)     
         } else {
             throw res
@@ -409,6 +423,19 @@ function FilterNew(e) {
     console.error(err)
     })
 }
+
+let buttonPost = document.querySelectorAll('.slider-button')
+
+function activatePaginationButton (link, posts, maxPosts) {
+    if (link) {
+        activateLink (link)
+        clearPosts()
+        let index = +link.textContent
+        let arrayPosts = showNextPosts(posts, maxPosts, index)
+        createPosts (arrayPosts)
+    }
+}
+
 
 
 function blogFilter(e) {

@@ -61,10 +61,14 @@
 .slider-radio-buttons .custom-radio:not(:last-child) {
     margin-right: 7px;
 }
-
-.slider-button:hover svg {
+.slider-button {
     transition: $time;
     cursor: pointer;
+}
+.slider-button svg {
+    transition: $time;
+}
+.slider-button:hover svg {
     fill: $Gray;
 }
 @media (max-width:900px) {
