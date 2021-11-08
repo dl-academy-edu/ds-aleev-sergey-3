@@ -436,7 +436,7 @@ function changeOtherData(e) {
     e.preventDefault()
 
     let data = changeData()
-
+    console.log(data)
     let caption = document.querySelectorAll('.input-caption_bad')
     delError(caption)
 

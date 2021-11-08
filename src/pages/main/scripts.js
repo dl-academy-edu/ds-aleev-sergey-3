@@ -10,11 +10,13 @@ let modalSignIn = document.querySelector('.modal-sign-in')
 let buttonSignIn = document.querySelectorAll('.button-js-signIn')
 const loginForm = document.querySelector('.js-login-form')
 const loginSubmit = document.querySelector('.js-login-submit')
+let popupLogin = document.querySelector('.modal-sign-in .modal-popup')
 
 let modalRegister = document.querySelector('.modal-register')
 let buttonRegister = document.querySelectorAll('.button-js-register')
 const registerForm = document.querySelector('.js-register')
 const registerSubmit = document.querySelector('.js-register-submit')
+let popupRegister = document.querySelector('.modal-register .modal-popup')
 
 let profileLink = document.querySelectorAll('.js-profile-link')
 
@@ -36,7 +38,6 @@ function openModal(button, popup, index) {
     })
     
     buttonClose[index].addEventListener('click', () => {
-        console.log(buttonClose[index])
         popup.classList.remove('modal-open')
     })
 }
@@ -183,7 +184,6 @@ function loginValidate(form) {
     let errors = errorReq + errorEmail
     return errors
 }
-let popupLogin = document.querySelector('.modal-sign-in .modal-popup')
 
 function login(e) {
     e.preventDefault()
@@ -212,11 +212,10 @@ function login(e) {
                     caption.remove()
                     loginForm.classList.remove('closed')
                 }
-
+            })
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('id', res.data.userId)
                 rerenderLinks()
-            })
             } else {
                     throw res
 
@@ -261,10 +260,22 @@ function register(e) {
         .then(res => res.json())
         .then(res => {
             if (res.success) {
-                modalClose.classList.remove('modal-open')
-                modalRegister.classList.remove('modal-open')
-            } else {
+                registerForm.classList.add('closed')
+                popupRegister.insertAdjacentHTML('afterbegin', '<p class="modal-caption modal-caption_good">Form has been sent successfully</p>')
+                modalRegister.querySelector('.modal-close').classList.add('modal-close_caption')
 
+                if (window.matchMedia("(max-width: 680px)").matches) {
+                    popupRegister.style.height = '100vh'
+                }
+                let caption = modalRegister.querySelector('.modal-caption')
+                modalRegister.querySelector('.modal-close').addEventListener('click', function () {
+                if (caption) {
+                    caption.remove()
+                    registerForm.classList.remove('closed')
+                }
+            })
+            } else {
+                throw res
             }
         })
     } 
