@@ -10,11 +10,13 @@ let modalSignIn = document.querySelector('.modal-sign-in')
 let buttonSignIn = document.querySelectorAll('.button-js-signIn')
 const loginForm = document.querySelector('.js-login-form')
 const loginSubmit = document.querySelector('.js-login-submit')
+let popupLogin = document.querySelector('.modal-sign-in .modal-popup')
 
 let modalRegister = document.querySelector('.modal-register')
 let buttonRegister = document.querySelectorAll('.button-js-register')
 const registerForm = document.querySelector('.js-register')
 const registerSubmit = document.querySelector('.js-register-submit')
+let popupRegister = document.querySelector('.modal-register .modal-popup')
 
 let profileLink = document.querySelectorAll('.js-profile-link')
 
@@ -24,6 +26,7 @@ let modalSendMessage = document.querySelector('.modal-send-message')
 let buttonSendMessage = document.querySelector('.button-js-send-message')
 const sendMessageForm = document.querySelector('.js-send-message')
 const sendMessageSubmit = document.querySelector('.js-send-message-submit')
+let popupSendMessage = document.querySelector('.modal-send-message .modal-popup')
 
 // открытие и закрытие модалок
 
@@ -85,7 +88,6 @@ rerenderLinks()
 
 function delError(caption, form) {
     let input = form.querySelectorAll('.custom-input_bad')
-    console.log(input)
     input.forEach(el => {
         el.classList.remove('custom-input_bad')
     })
@@ -124,9 +126,7 @@ function emailValidation (form) {
                 
             }
             let errorEmail = validateEmail(el)
-            console.log(errorEmail)
             if (errorEmail === false) {
-                console.log(el)
                 el.classList.add('custom-input_bad')
                 el.insertAdjacentHTML('afterend', '<p class="input-caption input-caption_bad">Please enter a valid email address (your entry is not in the format "somebody@example.com")</p>')
                 error++
@@ -268,7 +268,6 @@ function sendRequest (url, method, body=null) {
         },
         body: JSON.stringify(body)
     }
-    console.log(options)
     return fetch(url, options)
 }
 
@@ -296,7 +295,6 @@ sendRequestXML({
 
             if (serverData.target.status === 200) {
                 const posts = JSON.parse(serverData.target.response);
-                // console.log(posts.data)
                 let maxPosts = 5
                 createPage(posts.data.length, maxPosts)
                 function displayPosts (list, maxPosts) {
@@ -304,7 +302,6 @@ sendRequestXML({
                     return posts
                 }
                 let postsToShow = displayPosts(posts.data, maxPosts)
-                console.log(postsToShow)
                 function showNextPosts(list, maxPosts, index) {
                         return list.slice(maxPosts * index - 5, maxPosts * index)
                 }
@@ -443,8 +440,7 @@ function blogFilter(e) {
     getParams(data)
     setSearchParams(data)
     let params = getParamsFromLocation()
-    
-    console.log(location.search)
+
     clearPosts()
     let check = 0
     sendRequestXML({
@@ -455,7 +451,6 @@ function blogFilter(e) {
         
         if (serverData.target.status === 200) {
             const posts = JSON.parse(serverData.target.response);
-            // console.log(posts.data)
             let maxPosts = 5
             createPage(posts.data.length, maxPosts)
             function displayPosts (list, maxPosts) {
@@ -463,13 +458,11 @@ function blogFilter(e) {
                 return posts
             }
             let postsToShow = displayPosts(posts.data, maxPosts)
-            console.log(postsToShow)
             function showNextPosts(list, maxPosts, index) {
                     return list.slice(maxPosts * index - 5, maxPosts * index)
             }
             let linkPost = document.querySelectorAll('.blog-posts-pagination__link')
             
-            // console.log(linkPost)
             linkPost.forEach(link => {
                 let linkIndex = +link.textContent
                 link.addEventListener('click', (e) =>{
@@ -483,7 +476,6 @@ function blogFilter(e) {
                     // postSection.clear()
                     let arrayPosts = showNextPosts(posts.data, maxPosts, linkIndex)
                     createPosts (arrayPosts)
-                    // console.log(arrayPosts)
                 })
             })
             
@@ -609,7 +601,6 @@ function loginValidate(form) {
     let errors = errorReq + errorEmail
     return errors
 }
-let popupLogin = document.querySelector('.modal-sign-in .modal-popup')
 
 function login(e) {
     e.preventDefault()
@@ -618,7 +609,6 @@ function login(e) {
     delError(caption, loginForm)
     let error = 0
     error = loginValidate(loginForm)
-    console.log(error)
     if (error === 0) {
         sendRequest(pathToCreate + '/login', 'POST', data)
         .then(res => res.json())
@@ -638,11 +628,10 @@ function login(e) {
                     caption.remove()
                     loginForm.classList.remove('closed')
                 }
-
+            })
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('id', res.data.userId)
                 rerenderLinks()
-            })
             } else {
                     throw res
 
@@ -650,7 +639,7 @@ function login(e) {
         })
         .catch(err => {
         console.error(err)
-            })
+        })
     }
 }
 loginForm.addEventListener('submit', login)
@@ -687,10 +676,22 @@ function register(e) {
         .then(res => res.json())
         .then(res => {
             if (res.success) {
-                modalClose.classList.remove('modal-open')
-                modalRegister.classList.remove('modal-open')
-            } else {
+                registerForm.classList.add('closed')
+                popupRegister.insertAdjacentHTML('afterbegin', '<p class="modal-caption modal-caption_good">Form has been sent successfully</p>')
+                modalRegister.querySelector('.modal-close').classList.add('modal-close_caption')
 
+                if (window.matchMedia("(max-width: 680px)").matches) {
+                    popupRegister.style.height = '100vh'
+                }
+                let caption = modalRegister.querySelector('.modal-caption')
+                modalRegister.querySelector('.modal-close').addEventListener('click', function () {
+                if (caption) {
+                    caption.remove()
+                    registerForm.classList.remove('closed')
+                }
+            })
+            } else {
+                throw res
             }
         })
     } 
@@ -719,25 +720,35 @@ function sendMessageValidate(form) {
 function sendMessage(e) {
     e.preventDefault()
     let dataMessage = sendMessageData()
-    console.log(dataMessage)
     let data = {
-        to: 'serg.aleev@yandex.ru',
+        to: dataMessage.email,
         body: JSON.stringify(dataMessage)
     }
-    console.log(data)
     let caption = sendMessageForm.querySelectorAll('.input-caption_bad')
     delError(caption, sendMessageForm)
     let error = 0
     error = sendMessageValidate(sendMessageForm)
-    console.log(error)
     if (error === 0) {
         sendRequest(basePath + '/emails', 'POST', data)
         .then(res => res.json())
         .then(res => {
             if (res.success) {
-                console.log('success')
-            } else {
+                sendMessageForm.classList.add('closed')
+                popupSendMessage.insertAdjacentHTML('afterbegin', '<p class="modal-caption modal-caption_good">Form has been sent successfully</p>')
+                modalSendMessage.querySelector('.modal-close').classList.add('modal-close_caption')
 
+                if (window.matchMedia("(max-width: 680px)").matches) {
+                    popupSendMessage.style.height = '100vh'
+                }
+                let caption = modalSendMessage.querySelector('.modal-caption')
+                modalSendMessage.querySelector('.modal-close').addEventListener('click', function () {
+                if (caption) {
+                    caption.remove()
+                    sendMessageForm.classList.remove('closed')
+                }
+            })
+            } else {
+                throw res
             }
         })
     } 

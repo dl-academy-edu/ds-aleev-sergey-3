@@ -10,11 +10,13 @@ let modalSignIn = document.querySelector('.modal-sign-in')
 let buttonSignIn = document.querySelectorAll('.button-js-signIn')
 const loginForm = document.querySelector('.js-login-form')
 const loginSubmit = document.querySelector('.js-login-submit')
+let popupLogin = document.querySelector('.modal-sign-in .modal-popup')
 
 let modalRegister = document.querySelector('.modal-register')
 let buttonRegister = document.querySelectorAll('.button-js-register')
 const registerForm = document.querySelector('.js-register')
 const registerSubmit = document.querySelector('.js-register-submit')
+let popupRegister = document.querySelector('.modal-register .modal-popup')
 
 let profileLink = document.querySelectorAll('.js-profile-link')
 
@@ -42,9 +44,8 @@ function openModal(button, popup, index) {
     button.addEventListener('click', () => {
         toggleModal(popup)
     })
-    console.log(buttonClose)
     buttonClose[index].addEventListener('click', () => {
-        toggleModal(popup)
+        popup.classList.remove('modal-open')
     })
 }
 
@@ -95,7 +96,6 @@ rerenderLinks()
 
 function delError(caption) {
     let input = formChangePassword.querySelectorAll('.custom-input_bad')
-    console.log(input)
     input.forEach(el => {
         el.classList.remove('custom-input_bad')
     })
@@ -119,6 +119,8 @@ function validateReq(form) {
             }
         })
         return error
+    } else {
+        return error
     }  
 }
 function emailValidation (form) {
@@ -128,14 +130,11 @@ function emailValidation (form) {
         input.forEach(el => {
             if (el.value !== '') {
             function validateEmail(email) {
-                const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(String(email.value).toLowerCase());
-                
+                const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+                return re.test(String(email.value).toLowerCase())
             }
             let errorEmail = validateEmail(el)
-            console.log(errorEmail)
             if (errorEmail === false) {
-                console.log(el)
                 el.classList.add('custom-input_bad')
                 el.insertAdjacentHTML('afterend', '<p class="input-caption input-caption_bad">Please enter a valid email address (your entry is not in the format "somebody@example.com")</p>')
                 error++
@@ -156,9 +155,9 @@ function ageValidation (form) {
                 error++
                 return error
             }
+            return error
         }
-    } else { return error }
-
+    }
 }
 function isCorrect() {
     let error = 0
@@ -200,7 +199,6 @@ function sendRequest (url, method, body=null) {
         },
         body: JSON.stringify(body)
     }
-    console.log(options)
     return fetch(url, options)
 }
 
@@ -227,19 +225,20 @@ function sendRequestG (url, method, body=null) {
     }
     return fetch(url, options)
 }
-sendRequestG(baseUrl + `/${localStorage.getItem('id')}`, 'GET')
+if (localStorage.getItem('id')) {
+    sendRequestG(baseUrl + `/${localStorage.getItem('id')}`, 'GET')
     .then(res => res.json())
     .then(res => {
         if(res.success) {
-            console.log(res.data)
             putData(res.data)
         }
     })
     .catch(err => {
         console.error(err)
     })
-
-
+} else {
+    console.log('Вы не авторизованы')
+}
 
 
 // модалка логина
@@ -256,7 +255,6 @@ function loginValidate(form) {
     let errors = errorReq + errorEmail
     return errors
 }
-let popupLogin = document.querySelector('.modal-sign-in .modal-popup')
 
 function login(e) {
     e.preventDefault()
@@ -265,9 +263,8 @@ function login(e) {
     delError(caption, loginForm)
     let error = 0
     error = loginValidate(loginForm)
-    console.log(error)
     if (error === 0) {
-        sendRequest(pathToCreate + '/login', 'POST', data)
+        sendRequest(baseUrl + '/login', 'POST', data)
         .then(res => res.json())
         .then(res => {
             if (res.success) {
@@ -285,11 +282,18 @@ function login(e) {
                     caption.remove()
                     loginForm.classList.remove('closed')
                 }
-
+            })
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('id', res.data.userId)
                 rerenderLinks()
-            })
+
+                sendRequestG(baseUrl + `/${localStorage.getItem('id')}`, 'GET')
+                .then(res => res.json())
+                .then(res => {
+                if(res.success) {
+                    putData(res.data)
+                }
+    })
             } else {
                     throw res
 
@@ -297,7 +301,7 @@ function login(e) {
         })
         .catch(err => {
         console.error(err)
-            })
+        })
     }
 }
 loginForm.addEventListener('submit', login)
@@ -316,9 +320,12 @@ function registerData () {
 }
 function registerValidate(form) {
     let errorReq = validateReq(form)
-    let errorEmail = emailValidation (form)
-    let ageError = ageValidation (form)
+    let errorEmail = emailValidation(form)
+    let ageError = ageValidation(form)
     let errors = errorReq + errorEmail + ageError
+    console.log(errorReq)
+    console.log(errorEmail)
+    console.log(ageError)
     return errors
 }
 
@@ -329,15 +336,28 @@ function register(e) {
     let caption = registerForm.querySelectorAll('.input-caption_bad')
     delError(caption, registerForm)
     error = registerValidate(registerForm)
+    
     if (error === 0) {
-        sendRequest(pathToCreate, 'POST', data)
+        sendRequest(baseUrl, 'POST', data)
         .then(res => res.json())
         .then(res => {
             if (res.success) {
-                modalClose.classList.remove('modal-open')
-                modalRegister.classList.remove('modal-open')
-            } else {
+                registerForm.classList.add('closed')
+                popupRegister.insertAdjacentHTML('afterbegin', '<p class="modal-caption modal-caption_good">Form has been sent successfully</p>')
+                modalRegister.querySelector('.modal-close').classList.add('modal-close_caption')
 
+                if (window.matchMedia("(max-width: 680px)").matches) {
+                    popupRegister.style.height = '100vh'
+                }
+                let caption = modalRegister.querySelector('.modal-caption')
+                modalRegister.querySelector('.modal-close').addEventListener('click', function () {
+                if (caption) {
+                    caption.remove()
+                    registerForm.classList.remove('closed')
+                }
+            })
+            } else {
+                throw res
             }
         })
     } 
@@ -394,7 +414,6 @@ function changePassword(e) {
                 popupChangePassword.style.height = '100vh'
               }
             modalChangePassword.querySelector('.modal-close').classList.add('modal-close_caption')
-            console.log(caption)
             modalChangePassword.querySelector('.modal-close').addEventListener('click', function () {
                 if (caption) {
                     caption.remove()
@@ -436,7 +455,6 @@ function changeOtherData(e) {
     e.preventDefault()
 
     let data = changeData()
-    console.log(data)
     let caption = document.querySelectorAll('.input-caption_bad')
     delError(caption)
 
@@ -469,17 +487,17 @@ function changeOtherData(e) {
                 popupChangeData.style.height = '100vh'
               }
             modalChangeOtherData.querySelector('.modal-close').classList.add('modal-close_caption')
-            console.log(caption)
             modalChangeOtherData.querySelector('.modal-close').addEventListener('click', function () {
                 if (caption) {
                     caption.remove()
                     formChangeOtherData.classList.remove('closed')
                 }
             })
-            throw res
+            
         }
     })
     .catch(err => {
+        console.error(err)
     })
     }   
 }
@@ -491,6 +509,9 @@ formChangeOtherData.addEventListener('submit', changeOtherData)
 function deleteAccount(e) {
     e.preventDefault()
     sendRequestG(basePath + `/api/users/${localStorage.getItem('id')}`, 'DELETE')
+    localStorage.removeItem('token')
+    localStorage.removeItem('id')
+    location.reload()
 }
 
 buttonDeleteAccount.addEventListener('click', deleteAccount)
@@ -503,6 +524,5 @@ let dropZone = document.querySelector('.custom-file-input-label__file-name')
 let file
 inputGetFile.addEventListener('change', e => {
     file = inputGetFile.files[0]
-    console.log(file.name)
     dropZone.innerText = file.name
 })

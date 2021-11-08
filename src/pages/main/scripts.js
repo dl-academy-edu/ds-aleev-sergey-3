@@ -26,6 +26,7 @@ let modalSendMessage = document.querySelector('.modal-send-message')
 let buttonSendMessage = document.querySelector('.button-js-send-message')
 const sendMessageForm = document.querySelector('.js-send-message')
 const sendMessageSubmit = document.querySelector('.js-send-message-submit')
+let popupSendMessage = document.querySelector('.modal-send-message .modal-popup')
 
 // открытие и закрытие модалок
 
@@ -87,7 +88,6 @@ rerenderLinks()
 
 function delError(caption, form) {
     let input = form.querySelectorAll('.custom-input_bad')
-    console.log(input)
     input.forEach(el => {
         el.classList.remove('custom-input_bad')
     })
@@ -122,13 +122,10 @@ function emailValidation (form) {
             if (el.value !== '') {
             function validateEmail(email) {
                 const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                return re.test(String(email.value).toLowerCase());
-                
+                return re.test(String(email.value).toLowerCase());  
             }
             let errorEmail = validateEmail(el)
-            console.log(errorEmail)
             if (errorEmail === false) {
-                console.log(el)
                 el.classList.add('custom-input_bad')
                 el.insertAdjacentHTML('afterend', '<p class="input-caption input-caption_bad">Please enter a valid email address (your entry is not in the format "somebody@example.com")</p>')
                 error++
@@ -151,8 +148,6 @@ function ageValidation (form) {
     return error
 }
 
-
-
 // функция отправки запроса
 
 const pathToCreate = 'https://academy.directlinedev.com/api/users'
@@ -166,7 +161,6 @@ function sendRequest (url, method, body=null) {
         },
         body: JSON.stringify(body)
     }
-    console.log(options)
     return fetch(url, options)
 }
 
@@ -192,7 +186,6 @@ function login(e) {
     delError(caption, loginForm)
     let error = 0
     error = loginValidate(loginForm)
-    console.log(error)
     if (error === 0) {
         sendRequest(pathToCreate + '/login', 'POST', data)
         .then(res => res.json())
@@ -304,25 +297,35 @@ function sendMessageValidate(form) {
 function sendMessage(e) {
     e.preventDefault()
     let dataMessage = sendMessageData()
-    console.log(dataMessage)
     let data = {
-        to: 'serg.aleev@yandex.ru',
+        to: dataMessage.email,
         body: JSON.stringify(dataMessage)
     }
-    console.log(data)
     let caption = sendMessageForm.querySelectorAll('.input-caption_bad')
     delError(caption, sendMessageForm)
     let error = 0
     error = sendMessageValidate(sendMessageForm)
-    console.log(error)
     if (error === 0) {
         sendRequest(basePath + '/emails', 'POST', data)
         .then(res => res.json())
         .then(res => {
             if (res.success) {
-                console.log('success')
-            } else {
+                sendMessageForm.classList.add('closed')
+                popupSendMessage.insertAdjacentHTML('afterbegin', '<p class="modal-caption modal-caption_good">Form has been sent successfully</p>')
+                modalSendMessage.querySelector('.modal-close').classList.add('modal-close_caption')
 
+                if (window.matchMedia("(max-width: 680px)").matches) {
+                    popupSendMessage.style.height = '100vh'
+                }
+                let caption = modalSendMessage.querySelector('.modal-caption')
+                modalSendMessage.querySelector('.modal-close').addEventListener('click', function () {
+                if (caption) {
+                    caption.remove()
+                    sendMessageForm.classList.remove('closed')
+                }
+            })
+            } else {
+                throw res
             }
         })
     } 
@@ -353,7 +356,6 @@ controllButton[1].addEventListener('click', function(e) {
         changeToSlide()
         sliderDots[slideNumber].checked=true
         localStorage.setItem('activeSlide', slideNumber)
-        console.log(slideNumber)
     }
 
 })
@@ -363,7 +365,6 @@ controllButton[0].addEventListener('click', function(e) {
         changeToSlide()
         sliderDots[slideNumber].checked=true
         localStorage.setItem('activeSlide', slideNumber)
-        console.log(slideNumber)
     }
 })
 const swiper = new Swiper('.swiper', {
@@ -382,7 +383,6 @@ window.addEventListener('scroll', function() {
     if (window.pageYOffset >= scrollBreakPoint) {
         scrollButton.classList.add('scroll-show')
         if (scrollButton.classList.contains('scroll-show')) {
-            console.log(2)
             scrollButton.addEventListener('click', () => {
                 window.scrollBy({
                     top: -(window.pageYOffset),
