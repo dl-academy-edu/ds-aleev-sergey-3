@@ -1,0 +1,68 @@
+.portfolio {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 60px;
+    &__title {
+        margin-bottom: 50px;
+    }
+}
+.slider-portfolio {
+    max-width: 1000px;
+    width: 100%;
+}
+.swiper {
+    height: 604px;
+}
+.swiper-slide img {
+    margin: 0 auto;
+}
+.portfolio .swiper-button-prev,
+.portfolio .swiper-button-next {
+    color: black;
+    border-radius: 16px;
+}
+.slider-description {
+    z-index: 1;
+    width: 100%;
+    bottom: 0;
+    padding: 31px 0;
+    position: absolute;
+    background-color: $black-opacity;
+    color: white;
+    &__title {
+        max-width: 309px;
+        margin: 0 auto; 
+        text-align: center;
+        text-decoration: underline dashed;
+        margin-bottom: 16px;
+        font-family: Gilroy, $default-sans-serif;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: calc(21/18);
+        @media (max-width:600px) {
+            padding: 0 60px;
+        }
+    }
+    &__text {
+        margin: 0 auto;
+        text-align: center;
+        max-width: 400px;
+        font-size: 14px;
+        line-height: calc(16/14);
+        @media (max-width:600px) {
+            padding: 0 15px;
+        }
+    }
+}
+@media (max-width:600px) {
+    .slider-description {
+        padding: 20px 0;
+    }
+}
+@media (max-width:500px) {
+    .portfolio {
+        padding: 40px 20px;
+    }
+}

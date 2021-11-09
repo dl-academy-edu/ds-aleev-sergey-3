@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/common.css" rel="stylesheet" />
+    <link href="style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/static/fonts/gilroy.css" />
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
+    <title>Blog</title>
+  </head>
+  <body>
+    @@include('header/index.html')
+    <main class="grid">
+      <div class="scroll">
+        <button type="button" class="btn-scroll-up">
+          <img src="../../static/images/scroll-btn.svg" alt="">
+        </button>
+      </div>
+        <h1 class="blog-title">My blog</h1>
+        @@include('blogFilter/index.html')
+        
+        @@include('blogPosts/index.html')
+
+        @@include('blogPagination/index.html')
+
+    </main>
+    
+    <div class="another-background">
+        @@include('footer/index.html')
+    </div>
+    
+    @@include('modalSignIn/index.html')
+    @@include('modalRegister/index.html')
+    
+    @@include('modalSendMessage/index.html')
+
+    <script src="index.js"></script>
+  </body>
+</html>

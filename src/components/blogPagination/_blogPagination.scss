@@ -1,0 +1,32 @@
+.blog-posts-pagination {
+    margin: 50px 0 60px;
+    display: flex;
+    justify-content: space-between;
+    &__page {
+        display: flex;
+        align-items: center;
+    }
+    &__link {
+        font-family: Gilroy, $default-sans-serif;
+        font-style: normal;
+        font-weight: bold;
+        cursor: pointer;
+        color: $Mercury;
+        transition: $time;
+        &:hover {
+            color: black;
+        }
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+        &_active {
+            color: black;
+        }
+    }
+}
+
+@media (max-width: 840px) {
+    .blog-posts-pagination {
+        margin-top: calc(40px - 20px);
+    }
+}

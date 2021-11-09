@@ -1,0 +1,33 @@
+<section class="skills-list grid">
+    <h2 class="skills-list__title">Skills</h2>
+    <p class="skills-list__text">I work in such programs as</p>
+    <div class="skills-list__container container">
+        <div class="row flex-wrap">
+        @@include('skillsCard/index.html', {
+            "src":"skillsPicture1.svg",
+            "cardName": "HTML5",
+            "skillPercent": "85%"
+        })
+        @@include('skillsCard/index.html', {
+            "src":"skillsPicture2.svg",
+            "cardName": "CSS/SCSS",
+            "skillPercent": "85%"
+        })
+        @@include('skillsCard/index.html', {
+            "src":"skillsPicture3.svg",
+            "cardName": "JavaScript",
+            "skillPercent": "25%"
+        })
+        @@include('skillsCard/index.html', {
+            "src":"skillsPicture4.png",
+            "cardName": "Git/GitHub",
+            "skillPercent": "15%"
+        })
+        @@include('skillsCard/index.html', {
+            "src":"skillsPicture5.svg",
+            "cardName": "Figma",
+            "skillPercent": "90%"
+        })
+    </div>
+    </div>
+</section>

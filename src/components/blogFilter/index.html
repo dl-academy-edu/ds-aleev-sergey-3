@@ -1,0 +1,100 @@
+<section class="blog-filter">
+    <form name="filter" action="" class="blog-filter__form form-container">
+        <div class="blog-filter__selectors">
+            <div class="blog-filter__column tags">
+                <h4 class="blog-filter__titles">Tags</h4>
+                <div class="tags__checkbox-area">
+                    <input class="custom-checkbox__input" name="color" value="1" type="checkbox" id="filter-checkbox-colored1">
+                    <label for="filter-checkbox-colored1" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="2" type="checkbox" id="filter-checkbox-colored2">
+                    <label for="filter-checkbox-colored2" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="3" type="checkbox" id="filter-checkbox-colored3">
+                    <label for="filter-checkbox-colored3" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="4" type="checkbox" id="filter-checkbox-colored4">
+                    <label  for="filter-checkbox-colored4" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="5" type="checkbox" id="filter-checkbox-colored5">
+                    <label  for="filter-checkbox-colored5" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="6" type="checkbox" id="filter-checkbox-colored6">
+                    <label for="filter-checkbox-colored6" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="7" type="checkbox" id="filter-checkbox-colored7">
+                    <label for="filter-checkbox-colored7" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+
+                    <input class="custom-checkbox__input" name="color" value="8" type="checkbox" id="filter-checkbox-colored8">
+                    <label  for="filter-checkbox-colored8" class="custom-checkbox custom-checkbox_no-label custom-checkbox_colored"></label>
+                </div>
+            </div>
+
+            <div class="blog-filter__column views">
+                <h4 class="blog-filter__titles">Views</h4>
+                <div class="views__radio-buttons">
+
+                    <input class="custom-radio-input" type="radio" name="views" value="100-500" id="views-interval-first">
+                    <label class="views__radio custom-radio-label" for="views-interval-first">100-500</label>
+                    
+                    <input class="custom-radio-input" type="radio" name="views" value="500-1000" id="views-interval-second">
+                    <label class="views__radio custom-radio-label" for="views-interval-second">500-1000</label>
+
+                    <input class="custom-radio-input" type="radio" name="views" value="1000-2000" id="views-interval-third">
+                    <label class="views__radio custom-radio-label" for="views-interval-third">1000-2000</label>
+                </div>
+            </div>
+
+            <div class="blog-filter__column comments">
+                <h4 class="blog-filter__titles">Comments</h4>
+                <div class="comments__ckeckboxes">
+                    <input class="custom-checkbox__input" type="checkbox" name="comments" value="0" id="comments-checkbox-first">
+                    <label for="comments-checkbox-first" class="custom-checkbox comments__checkbox">0</label>
+
+                    <input class="custom-checkbox__input" type="checkbox" name="comments" value="0-1" id="comments-checkbox-second">
+                    <label for="comments-checkbox-second" class="custom-checkbox comments__checkbox">0-1</label>
+
+                    <input class="custom-checkbox__input" type="checkbox" name="comments" value="1-50" id="comments-checkbox-third">
+                    <label for="comments-checkbox-third" class="custom-checkbox comments__checkbox">1-50</label>
+                </div>
+            </div>
+
+            <div class="blog-filter__column show-amount">
+                <h4 class="blog-filter__titles">How show?</h4>
+                <div class="show-amount__radio-buttons">
+                    
+                    <input class="custom-radio-input" type="radio" name="limit" value="5" id="show-amount-first">
+                    <label class="show-amount__radio custom-radio-label" for="show-amount-first">show 5</label>
+                    
+                    <input class="custom-radio-input" type="radio" name="limit" value="10" id="show-amount-second">
+                    <label class="show-amount__radio custom-radio-label" for="show-amount-second">show 10</label>
+                </div>
+            </div>
+
+            <div class="blog-filter__column sorting">
+                <h4 class="blog-filter__titles">Sort by</h4>
+                <div class="sorting__radio">
+
+                    <input class="custom-radio-input" type="radio" name="sort" value="date" id="sorting-first">
+                    <label class="sorting__radio custom-radio-label" for="sorting-first" value="date">date</label>
+
+                    <input class="custom-radio-input" type="radio" name="sort" value="title" id="sorting-second">
+                    <label class="sorting__radio custom-radio-label" for="sorting-second" value="title">title</label>
+
+                    <input class="custom-radio-input" type="radio" name="sort" value="views" id="sorting-third">
+                    <label class="sorting__radio custom-radio-label" for="sorting-third" value="views">views</label>
+                </div>
+            </div>
+
+            <div class="blog-filter__column filter-reset">
+                <p class="filter-reset__label">reset form</p>
+                <button type="reset" class="js-filter-reset btn-white">Reset</button>
+            </div>
+        </div>
+
+        <div class="blog-filter__search">
+            <input name="searchField" class="blog-input-search custom-input" type="text">
+            <button type="submit" class="blog-filter__btn-submit btn-white">Search</button>
+        </div>
+    </form>
+</section>

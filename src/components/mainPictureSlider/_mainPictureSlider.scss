@@ -1,0 +1,95 @@
+.main-picture-slider {
+    align-items: center;
+}
+.main-picture-slider img {
+    max-width: 100%;
+}
+.slider {
+    margin-bottom: 60px;
+    &__wrapper {
+        margin-bottom: 30px;
+        height: 465px;
+        overflow: hidden;
+    }
+    &__pic {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        transition: 0.5s;
+    }
+    &__slide {
+        display: flex;
+        flex-shrink: 0;
+        width: 100%;
+        & img {
+            object-fit: cover;
+        }
+    }
+    &__controls {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.slider-title {
+    padding-left: 80px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    margin: 40px 0 36px 0;
+    &__heading {
+        width: 250px;
+        font-size: 47px;
+        line-height: calc(57/47);
+    }
+    &__wrapper {
+        display: flex;
+    }
+}
+.slider-radio-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.slider-radio-buttons svg {
+    transition: $time;
+    cursor: pointer;
+  }
+.slider-radio-buttons label:not(:last-child),
+.slider-radio-buttons .custom-radio:not(:last-child) {
+    margin-right: 7px;
+}
+.slider-button {
+    transition: $time;
+    cursor: pointer;
+}
+.slider-button svg {
+    transition: $time;
+}
+.slider-button:hover svg {
+    fill: $Gray;
+}
+@media (max-width:900px) {
+    .slider-title {
+        padding-left: 0;
+        &__text {
+            padding-right: 40px;
+        }
+    }
+}
+@media (max-width:500px) {
+    .slider-title {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 30px;
+        margin-bottom: 34px;
+        &__heading {
+            margin-bottom: 20px;
+        }
+        &__text {
+            padding-right: 75px;
+        }
+    }
+}

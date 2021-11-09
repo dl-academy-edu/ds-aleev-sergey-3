@@ -1,0 +1,627 @@
+@import "./colors";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+%psevdo {
+  display: block;
+  position: absolute;
+  }
+$time: 0.4s;
+
+$default-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+.grid{
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  @media (max-width:1100px) {
+    margin: 0 60px;
+  }
+  @media (max-width:500px) {
+    margin: 0 20px;
+  }
+}
+img {
+  display: block;
+  // max-width: 100%;
+  height: auto;
+}
+body {
+  font-size: 18px;
+  line-height: calc(22/18);
+  font-family: Gilroy, $default-sans-serif;
+  font-weight: normal;
+  font-style: normal;
+}
+h1 {
+  margin: 0;
+  font-family: Gilroy, $default-sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 47px;
+  line-height: calc(57/47);
+}
+h2 {
+  font-family: Gilroy, $default-sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 34px;
+  line-height: calc(41/34);
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+button {
+  background-color: inherit;
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+}
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-right: 20px;
+  padding-left: 20px;
+}
+.another-background {
+  background: $Wild-Sand;
+}
+.no-dots {
+  list-style-type:none;
+  padding: 0;
+  margin: 0;
+}
+
+// BUTTONS
+
+.btn-black,
+.btn-white,
+.btn-bad,
+.btn-good {
+  font-family: Gilroy, $default-sans-serif;
+  font-weight: bold;
+  font-style: normal;
+  text-align: center;
+  padding: 7px 16px;
+  border-radius: 30px;
+  border: 3px solid;
+  transition: $time;
+}
+
+.btn-black {
+  border-color:black;
+  background-color: black;
+  color: white;
+  &:hover,
+  &:focus {
+    background-color: white;
+    color: black;
+  }
+}
+.btn-white {
+  border-color:black;
+  background-color: white;
+  color: black;
+  &:hover,
+  &:focus {
+    border-color:black;
+    color: white;
+    background-color: black;
+  }
+}
+.btn-bad {
+  border-color:$Pomegranate;
+  background-color:white;
+  color: $Pomegranate;
+  &:hover,
+  &:focus {
+    border-color:$Pomegranate;
+    color: white;
+    background-color:$Pomegranate;
+  }
+}
+.btn-good {
+  border-color: $Malachite;
+  background-color:white;
+  color: $Malachite;
+  &:hover,
+  &:focus {
+    border-color: $Malachite;
+    color: white;
+    background-color: $Malachite;
+  }
+}
+
+// Slider Button
+
+.slider-button {
+  display: flex;
+  flex-direction: row;
+  width: 42px;
+  height: 42px;
+  border: 2.5px solid #070707;
+  border-radius: 21px;
+  padding-top: 6px;
+  transition: $time;
+  &:hover {
+    border-color: $Gray;
+  }
+  &_left {
+    padding-left: 9px;
+  }
+  &_right {
+    padding-left: 13px;
+  }
+}
+
+// custom radio-button
+
+.custom-radio {
+  display: none;
+}
+.custom-radio:hover + label svg {
+  fill: $Gray;
+}
+.custom-radio:checked + label svg {
+  fill: #070707;
+}
+%hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+.hidden {
+  display: none;
+}
+
+// custom check-box
+
+.custom-checkbox {
+  height: 25px;
+  position: relative;
+  padding-left: 37px;
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin-left: -37px;
+    border: 2.5px solid #E5E5E5;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: $time;
+  }
+  &__input {
+    @extend %hidden;
+  }
+  &:hover::before {
+    border-color: $Gray;
+  }
+}
+
+.custom-checkbox__input:checked + .custom-checkbox::after {
+    @extend %psevdo;
+    content: url("/static/images/checkbox-mark.svg");
+    left: 5px;
+    top:3px;
+}
+.custom-checkbox__input:checked + .custom-checkbox:not(.custom-checkbox_colored)::before {
+  border-color: Black;
+} 
+.custom-checkbox_no-label {
+  padding-left: 0;
+}
+.custom-checkbox_no-label::before {
+  margin-left: 0;
+  position: relative;
+}
+.custom-checkbox-mini {
+  position: relative;
+  padding-left: 38px;
+  &::before {
+    @extend %psevdo;
+    content: '';
+    width: 19px;
+    height: 19px;
+    border: 2px solid $Mercury;
+    border-radius: 3px;
+    box-sizing: border-box;
+    transition: $time;
+  }
+  &:hover::before {
+    border-color: $Gray;
+  }
+}
+.custom-checkbox-mini-input:checked + .custom-checkbox-mini::before {
+  border-color: Black;
+}
+.custom-checkbox-mini-input:checked + .custom-checkbox-mini::after {
+  @extend %psevdo;
+  content: url('/static/images/check-mark-mini.svg');
+  height: 14px;
+  top: 0px;
+  left: 4px;
+}
+
+// Custom radio-buttons
+
+.custom-radio-input {
+  @extend %hidden;
+}
+.custom-radio-label {
+  height: 25px;
+  position: relative;
+  padding-left: 37px;
+  padding-top: 2px;
+  &::before {
+    @extend %psevdo;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 25px;
+    height: 25px;
+    border: 2.5px solid #E5E5E5;
+    box-sizing: border-box;
+    border-radius: 30px;
+    transition: $time;
+  }
+}
+.custom-radio-input:hover + .custom-radio-label::before {
+  border-color: $Gray;
+}
+.custom-radio-input:checked + .custom-radio-label::before {
+  border-color: Black;
+}
+.custom-radio-label::after {
+    @extend %psevdo;
+    content: '';
+    background-color: $Mercury;
+    top: 6px;
+    left: 6px;
+    width: 13px;
+    height: 13px;
+    border-radius: 30px;
+    transition: $time;
+}
+.custom-radio-input:hover + .custom-radio-label::after {
+  background-color: $Gray;
+}
+.custom-radio-input:checked + .custom-radio-label::after {
+  background-color: Black;
+}
+
+// Custom input File
+
+.custom-file-input {
+  display: none;
+}
+.custom-file-input-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  &__box {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    margin-top: 6px;
+    height: 50px;
+    width: 100%;
+    border: 2px solid #E5E5E5;
+  }
+  &__file-name {
+    font-family: Gilroy, $default-sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    line-height: calc(21/18);
+    margin-left: 10px;
+  }
+}
+
+// Modal Popups
+
+.modal-background {
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: $Wild-Sand-Opacity;
+  @media(max-width:450px) {
+    background-color: white;
+  }
+}
+.modal-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.modal-content {
+  background-color: white;
+  padding: 40px;
+  border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  &__button {
+    margin-top: 20px;
+      align-self: flex-start;
+  }
+  @media(max-width:450px) {
+    border: none;
+    padding: 20px;
+  }
+}
+.modal-background {
+  z-index: 10;
+  display: none;
+}
+.required-field {
+  color: $Pomegranate;
+}
+.custom-input,
+textarea {
+    height: 50px;
+    width: 100%;
+    padding: 2.5px;
+    border: 3px solid #E5E5E5;
+    transition: $time;
+    outline: none;
+    &:hover {
+        cursor: pointer;
+        border-color: #828282;
+    }
+    &:focus {
+        border-color: #070707;
+        cursor: text;
+    }
+}
+.custom-input_bad {
+  border-color: $Pomegranate;
+}
+.modal-content label + input,
+.modal-content label input,
+.modal-content textarea {
+  margin-top: 6px;
+}
+.modal-content > label {
+  margin-top: 20px;
+}
+
+.modal-content textarea {
+  resize: none;
+  height: 150px;
+}
+.modal-content label:hover {
+  cursor: pointer;
+}
+.modal-close {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: -36px;
+  transition: fill $time;
+  &:hover,
+  &:active {
+      fill: #070707;
+  }
+  @media(max-width:450px) {
+    top: -20px;
+    left: 20px;
+  }
+}
+.modal-two-column {
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20px;
+}
+.modal-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.modal-two-column label {
+  width: 100%;
+  &:first-child {
+      margin-right: 20px;
+  }
+}
+
+.modal-caption {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Gilroy, $default-sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: calc(29/24);
+  text-align: center;
+  max-width: 475px;
+  width: 100%;
+  &_bad {
+    color: $Pomegranate;
+  }
+  &_good {
+    color: $Malachite;
+  }
+  @media(max-width:530px) {
+    padding: 0 20px;
+  }
+}
+.input-caption {
+  margin-top: 10px;
+  font-family: Gilroy;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: calc(14/16);
+  &_bad {
+    color: $Pomegranate;
+  }
+  &_good {
+    color: $Malachite;
+  }
+}
+
+// кнопка прокрутки
+
+.btn-scroll-up {
+  opacity: 0;
+  transition: 0.4s;
+  cursor: pointer;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.25));
+  z-index: 2;
+  position: fixed;
+  @media (min-width:1151px) {
+    transform: translate(1000px, 70vh);
+  }
+  @media (max-width:1150px) {
+    top: 85vh;
+    right: 0;
+  }
+}
+.scroll-show {
+  opacity: 1;
+}
+
+
+// Self-Made-Grid
+
+$numberColumns: 12;
+$gap:20px;
+$gap-mobile: 16px;
+
+$size-xl:1200px;
+$size-lg:1000px;
+$size-md:768px;
+$size-sm:576px;
+
+@mixin media-interval ($min, $max) {
+  @if $max == 0 {
+    $max: 9999px;
+  }
+  @media (min-width: ($min + 1px)) and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin create-grid ($type-width, $media-size) {
+  @if $media-size == "full" {
+    .container {
+      max-width: 100%;
+    }
+  } @else {
+      .container {
+        max-width: $media-size - $gap*2;
+      }
+    }
+  @for $i from 1 through $numberColumns {
+    .col-#{$type-width}-#{$i} {
+      width: (100% / $numberColumns) * $i;
+    }
+  
+    .skip-#{$type-width}-#{$i} {
+      margin-left: (100% / $numberColumns) * $i;
+    }
+    .add-#{$type-width}-#{$i} {
+      margin-right: (100% / $numberColumns) * $i;
+    }
+  }
+}
+
+@include media-interval($size-xl, 0) {
+  @include create-grid(xl, $size-xl);
+}
+@include media-interval($size-lg, $size-xl) {
+  @include create-grid(lg, $size-lg);
+}
+@include media-interval($size-md, $size-lg) {
+  @include create-grid(md, $size-md);
+}
+@include media-interval($size-sm, $size-md) {
+  @include create-grid(sm, $size-sm);
+}
+@include media-interval(0, $size-sm) {
+  @include create-grid(xs, "full");
+}
+
+.container {
+  padding-left: $gap/2;
+  padding-right: $gap/2;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-fluid {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: $gap;
+  padding-right: $gap;
+}
+.row {
+  display: flex;
+  margin: (-$gap) (-$gap) 0 (-$gap);
+}
+.col {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+div[class^="col"] {
+  box-sizing: border-box;
+  padding: $gap $gap/2 0 $gap/2;
+}
+
+
+// Подключение компонентов
+@import "./header/header";
+
+@import "./mainPictureSlider/mainPictureSlider";
+@import "./profileSection/profileSection";
+@import "./blogFilter/blogFilter";
+
+@import "./chatAbout/chatAbout";
+@import "./skillsList/skillsList";
+@import "./skillsCard/skillsCard";
+@import "./portfolio/portfolio";
+
+@import "./blogPosts/blogPosts";
+@import "./blogPagination/blogPagination";
+
+@import "./footer/footer";
+@import "./modalRegister/modalRegister";
+@import "./modalSignIn/modalSignIn";
+@import "./modalSendMessage/modalSendMessage";
+
+@import "./modalChangePassword/modalChangePassword";
+@import "./modalChangeOtherData/modalChangeOtherData";
+
+.modal-open {
+  display: block
+}
+.closed {
+  display:none;
+}
+.modal-caption ~ .modal-close {
+  left: 590px;
+  top: -40px;
+  @media(max-width:680px) {
+    left: 20px;
+    top: 20px;
+  }
+}
